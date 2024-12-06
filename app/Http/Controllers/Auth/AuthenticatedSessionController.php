@@ -29,8 +29,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        //Logical Conditions for rediecting each users to its correct route
         if($request->user()->role === 'company'){
-            return redirect()->intended(RouteServiceProvider::COMPANY_DASHBOARD); 
+            return redirect()->intended(RouteServiceProvider::COMPANY_DASHBOARD);
         }elseif($request->user()->role === 'candidate'){
             return redirect()->intended(RouteServiceProvider::CANDIDATE_DASHBOARD);
         }
