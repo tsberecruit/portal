@@ -29,26 +29,26 @@ require __DIR__.'/auth.php';
 
 /** Candidates Dashboard Routes */
 Route::group([
-                'Middleware' => ['auth', 'verified', 'user.role:candidate'], 
-                'prefix' => 'candidate', 
+                'Middleware' => ['auth', 'verified', 'user.role:candidate'],
+                'prefix' => 'candidate',
                 'as' => 'candidate.'
-            ], 
+            ],
             function(){
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('frontend.candidate-dashboard.dashboard');
     })->name('dashboard');
 });
 
 /** Company Dashboard Routes */
 Route::group([
-    'Middleware' => ['auth', 'verified', 'user.role:company'], 
-    'prefix' => 'company', 
+    'Middleware' => ['auth', 'verified', 'user.role:company'],
+    'prefix' => 'company',
     'as' => 'company.'
-], 
+],
 function(){
     Route::get('/dashboard', function () {
         return view('frontend.company-dashboard.dashboard');
-    })->name('dashboard');    
+    })->name('dashboard');
 });
 
 
