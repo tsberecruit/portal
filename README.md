@@ -35,8 +35,9 @@ The HTTP/Middleware/UserRoleMiddleware.php enforces access control by verifying 
 ### Middleware Registration:
 Also from the MiddleWare/RedirectAuthenticated.php, we protected the logged in users from being redirected to the login page when trying to access the login route via the url. This means that login or register page wont be accessible while a user is logged in.
 
-The middleware is registered in kernel.php to be applied to specific routes.
-By implementing this multi-authentication system, we have successfully provided a secure and efficient user experience, tailored to the specific needs of each user role.
+The middleware is registered in kernel.php to be applied to specific routes. Also by protecting the logged in user from being redirected to the login page while trying to access the login route via the url. This means that login or register page wont be accessible while a user is logged in.
+
+By implementing this multi-authentication system, we have successfully provided a secure and efficient user experience, which will tailor to the specific needs of each user role.
 
 ## GROUPING MIDDLEWARE ACCORDING TO USER ROLES
 We created middleware group to protect all incoming and outgoing route for Candidate user roles in the web.php 
