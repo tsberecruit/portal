@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,15 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'user.role:candidate'])->name('dashboard');
-
-
-Route::get('company/dashboard', function () {
-    return view('frontend.company-dashboard.dashboard');
-})->middleware(['auth', 'verified', 'user.role:company'])->name('company.dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -34,3 +26,29 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+/** Candidates Dashboard Routes */
+Route::group([
+                'Middleware' => ['auth', 'verified', 'user.role:candidate'], 
+                'prefix' => 'candidate', 
+                'as' => 'candidate.'
+            ], 
+            function(){
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+/** Company Dashboard Routes */
+Route::group([
+    'Middleware' => ['auth', 'verified', 'user.role:company'], 
+    'prefix' => 'company', 
+    'as' => 'company.'
+], 
+function(){
+    Route::get('/dashboard', function () {
+        return view('frontend.company-dashboard.dashboard');
+    })->name('dashboard');    
+});
+
+
