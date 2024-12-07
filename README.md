@@ -8,6 +8,12 @@ Starting with mult-Authentication system
 To accommodate distinct user roles (Admin, Company, and Candidate), a multi-authentication system was implemented. This system ensures that each user, upon successful authentication, is directed to their respective dashboard.
 
 ## Authentication Flow
+BASIC PLANNING BEFORE MULTI-AUTHENTICATION SYSTEM:
+
+               AUTHENTICATOR
+| ADMIN |     ===============>  | ADMIN DASHBOARD |
+| COMPANY |   ===============>  | COMPANY DASHBOARD |
+| CANDIDATE | ===============>  | CANDIDATE DASHBOAED
 ### Shared Login Form: 
 A unified login form is presented to both Company and Candidate users.
 ### Authentication and Redirection:
