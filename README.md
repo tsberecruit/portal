@@ -53,3 +53,6 @@ Basically, Company and Candidate user are the frontend users while the Admin is 
 ## Implemented User Provider & Authenticated Guards for the Admin
 Because we have two users table, we decided to implement user provider and authenticated guard specifically for the admin.
 In the confi/auth.php, we created an authenticated guard and user provider for the Admin which verifies a user's identity during a request, and defines how user admin is retrieved from storage and authenticated.
+
+- 
+Multi-Authentication: Created and user AdminSeeder for testing the SupperAdmin type
