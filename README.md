@@ -44,5 +44,12 @@ By implementing this multi-authentication system, we have successfully provided 
 ### GROUPING MIDDLEWARE ACCORDING TO USER ROLES
 We created middleware group to protect all incoming and outgoing route for Candidate user roles in the web.php 
 
-# FOCUSING ON THE ADMIN USER TYPE
+# FOCUSING ON THE ADMIN USER TYPE:
+
+| ADMIN |  ===============>  | ADMIN DASHBOARD |
+
 Basically, Company and Candidate user are the frontend users while the Admin is the backend user who wil be responsible for managing both the backend and the frontend. To ensure securty, we have created a seperate guard for it. Meaning, the super admin will have the capability to grant users roles and permission and no external user can have access to admin privileges without authorization. We will cover more of it in the Role Base Access Controll (RBAC).
+
+## Implemented User Provider & Authenticated Guards for the Admin
+Because we have two users table, we decided to implement user provider and authenticated guard specifically for the admin.
+In the confi/auth.php, we created an authenticated guard and user provider for the Admin which verifies a user's identity during a request, and defines how user admin is retrieved from storage and authenticated.
