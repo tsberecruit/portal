@@ -20,6 +20,7 @@ class RouteServiceProvider extends ServiceProvider
     //Routing users to their specific dashbaod
     public const CANDIDATE_DASHBOARD = '/candidate/dashboard';
     public const COMPANY_DASHBOARD = '/company/dashboard';
+    public const ADMIN_DASHBOARD = '/company/dashboard';
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
      */
