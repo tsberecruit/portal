@@ -56,3 +56,4 @@ In the confi/auth.php, we created an authenticated guard and user provider for t
 
 - 
 Multi-Authentication: Created and user AdminSeeder for testing the SupperAdmin type
+- Integrated forgot password functionality
