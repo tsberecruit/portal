@@ -94,7 +94,10 @@
 
                 <div class="col-xl-12">
                   <div class="form-group">
+                    <div class="d-flex justify-content-between"> 
                     <label class="form-label" for="input-4">Password *</label>
+                    <a href="{{ route('password.request') }}">Forgot password?</a>
+                  </div>
                     <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" id="input-4" type="password" required="" name="password"
                       placeholder="************">
 
@@ -118,7 +121,7 @@
                 <button class="btn btn-default hover-up w-100" type="submit" name="login">Login</button>
               </div>
               <div class="text-muted text-center">Don't have an account?
-                <a href="page-register.html">Registration</a>
+                <a href="{{ route('register') }}">Registration</a>
               </div>
             </form>
             <!--<div class="text-center mt-20">
