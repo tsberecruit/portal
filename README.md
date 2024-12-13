@@ -65,3 +65,5 @@ Consists of the sidebar, navigational bar and the main content (Body).
 
 ## Setting Up the Frontend with the most important Job sections/Components.
 
+## Succesfully setup the registration UI with its authenticatin system for candidates and recruiters
+The idea is to get users to decide which type of user role they want to access from the registration page.
