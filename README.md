@@ -59,6 +59,9 @@ Multi-Authentication: Created and user AdminSeeder for testing the SupperAdmin t
 - Integrated forgot password functionality
 
 
-## Setting Up the Admin Panel/Dashboard 
+## Setting Up the Admin Panel/Dashboard and Implementing all the login, registration, forgot and reset password.
 - Architecture:
 Consists of the sidebar, navigational bar and the main content (Body).
+
+## Setting Up the Frontend with the most important Job sections/Components.
+
