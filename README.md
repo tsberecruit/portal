@@ -82,3 +82,7 @@ Worked on the company Dashboard HTML, and CSS Layout with all the neccessary att
 Used Botstrap 5 for the styling the attributes. Also incorporated Select2 template format for the layouts.
 
 # Creating Route for submitting Cmpany Info
+
+# Creating A Trait file for reusable file upload methods - import into any useable file
+
+# Completed the form submission for Company Profile info. Submitting form into the companies table - companies info

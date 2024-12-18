@@ -70,7 +70,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                                            <input name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="file" value="">
+                                            <input name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" value="">
                                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                         </div>
                                     </div>
