@@ -39,6 +39,11 @@
                                 data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
                                 aria-selected="false">Account Settings</button>
                         </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                                data-bs-target="#candidate-status" type="button" role="tab" aria-controls="pills-contact"
+                                aria-selected="false">Apllication Status</button>
+                        </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
@@ -83,8 +88,177 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
-                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                            <form action="">
+                                <div class="row">
+                                    
+                                    <div class="col-md-4">
+                                        <div class="form-group select-style">
+                                            <label class="font-sm color-text-mutted mb-10">Industry Type*</label>
+                                            <select name="" id="" class="form-control form-icons select-active">
+                                                <option value="">Select</option>
+                                                <option value="">Test1</option>
+                                                <option value="">Test2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group select-style">
+                                            <label class="font-sm color-text-mutted mb-10">Organization Type*</label>
+                                            <select name="" id="" class="form-control form-icons select-active">
+                                                <option value="">Select</option>
+                                                <option value="">Test1</option>
+                                                <option value="">Test2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group select-style">
+                                            <label class="font-sm color-text-mutted mb-10">Team Size*</label>
+                                            <select name="" id="" class="form-control form-icons select-active">
+                                                <option value="">Select</option>
+                                                <option value="">Test1</option>
+                                                <option value="">Test2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Website</label>
+                                            <input type="text" class="form-controll">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Establishment Date</label>
+                                            <input type="text" class="form-controll datepicker">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Email</label>
+                                            <input type="email" class="form-controll">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Phone Request *</label>
+                                            <input type="text" class="form-controll">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group select-style">
+                                            <label class="font-sm color-text-mutted mb-10">Country *</label>
+                                            <select name="" id="" class="form-control form-icons select-active">
+                                                <option value="">Select</option>
+                                                <option value="">Test1</option>
+                                                <option value="">Test2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group select-style">
+                                            <label class="font-sm color-text-mutted mb-10">State</label>
+                                            <select name="" id="" class="form-control form-icons select-active">
+                                                <option value="">Select</option>
+                                                <option value="">Test1</option>
+                                                <option value="">Test2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group select-style">
+                                            <label class="font-sm color-text-mutted mb-10">City</label>
+                                            <select name="" id="" class="form-control form-icons select-active">
+                                                <option value="">Select</option>
+                                                <option value="">Test1</option>
+                                                <option value="">Test2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Address</label>
+                                            <input type="text" class="form-controll">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Map Link</label>
+                                            <input type="text" class="form-controll">
+                                        </div>
+                                    </div>
+
+
+                                    
+                                </div>
+
+                                <div class="box-button mt-15">
+                                    <button class="btn btn-apply-big font-md font-bold">Save All Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">Username: *</label>
+                                        <input type="text" class="form-controll">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">Email: *</label>
+                                        <input type="text" class="form-controll">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-default btn-shadow">Save</button>
+                                    </div>
+                                </div>
+
+                                <hr>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">Password: *</label>
+                                        <input type="password" class="form-controll">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="font-sm color-text-mutted mb-10">Confirm Password: *</label>
+                                        <input type="password" class="form-controll">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <button class="btn btn-default btn-shadow">Save</button>
+                                    </div>
+                                </div>
+
+                            
+
+                                
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="candidate-status" role="tabpanel" aria-labelledby="pills-contact-tab">Application Status</div>
                   </div>
 
                 </div>
