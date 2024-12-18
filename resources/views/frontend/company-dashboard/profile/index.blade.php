@@ -22,7 +22,7 @@
             <div class="row">
                 @include('frontend.candidate-dashboard.sidebar')
                 <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
-                    
+
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
@@ -52,8 +52,9 @@
                             <form action="{{ route('company.profile.company-info') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    
+
                                     <div class="col-md-6">
+                                        <x-image-preview :height="200" :width="200" :source="$companyInfo->logo" />
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Logo *</label>
                                             <input name="logo" class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" type="file" value="">
@@ -61,6 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        <x-image-preview :height="200" :width="500" :source="$companyInfo->banner" />
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Banner *</label>
                                             <input name="banner" class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}" type="file" value="">
@@ -70,21 +72,21 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                                            <input name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" value="">
+                                            <input name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" value="{{ $companyInfo?->name }}">
                                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Bio *</label>
-                                            <textarea name="bio" class="summernote {{ $errors->has('bio') ? 'is-invalid' : '' }}"></textarea>
+                                            <textarea name="bio" class="summernote {{ $errors->has('bio') ? 'is-invalid' : '' }}">{{ $companyInfo?->bio }}</textarea>
                                             <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label class="font-sm color-text-mutted mb-10">Company Vision *</label>
-                                            <textarea name="vision" class="summernote {{ $errors->has('vision') ? 'is-invalid' : '' }}"></textarea>
+                                            <textarea name="vision" class="summernote {{ $errors->has('vision') ? 'is-invalid' : '' }}">{{ $companyInfo?->vision }}</textarea>
                                             <x-input-error :messages="$errors->get('vision')" class="mt-2" />
                                         </div>
                                     </div>
@@ -100,7 +102,7 @@
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <form action="">
                                 <div class="row">
-                                    
+
                                     <div class="col-md-4">
                                         <div class="form-group select-style">
                                             <label class="font-sm color-text-mutted mb-10">Industry Type*</label>
@@ -210,7 +212,7 @@
                                     </div>
 
 
-                                    
+
                                 </div>
 
                                 <div class="box-button mt-15">
@@ -264,7 +266,7 @@
                                             <button class="btn btn-default btn-shadow">Save</button>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </form>
                         </div>

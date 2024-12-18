@@ -14,7 +14,8 @@ class CompanyProfileController extends Controller
     use FileUploadTrait;
 
     function index() : view {
-        return view('frontend.company-dashboard.profile.index');
+        $companyInfo = Company::where('user_id', auth()->user()->id)->first();
+        return view('frontend.company-dashboard.profile.index', compact('companyInfo'));
     }
     function updateCompanyInfo(CompanyInfoUpdateRequest $request) {
         $logoPath = $this->uploadfile($request, 'logo');
@@ -32,9 +33,11 @@ class CompanyProfileController extends Controller
             $data
         );
 
+        notify()->success('Updated Successfully ⚡️', 'Success');
+
         return redirect()->back();
 
 
-        
+
     }
 }

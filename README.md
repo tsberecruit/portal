@@ -86,3 +86,9 @@ Used Botstrap 5 for the styling the attributes. Also incorporated Select2 templa
 # Creating A Trait file for reusable file upload methods - import into any useable file
 
 # Completed the form submission for Company Profile info. Submitting form into the companies table - companies info
+
+# Editing companies info and getting the fields' data displayed in the form.
+
+# Implemented Dynamic notification for submitted forms
+
+
