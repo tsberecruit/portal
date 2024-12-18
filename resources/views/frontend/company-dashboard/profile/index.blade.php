@@ -46,39 +46,46 @@
                         </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
+                        <!-- Company Info -->
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
-                            <form action="">
+                            <form action="{{ route('company.profile.company-info') }}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Logo*</label>
-                                            <input class="form-control" type="file" value="">
+                                            <label class="font-sm color-text-mutted mb-10">Logo *</label>
+                                            <input name="logo" class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}" type="file" value="">
+                                            <x-input-error :messages="$errors->get('logo')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Banner*</label>
-                                            <input class="form-control" type="file" value="">
+                                            <label class="font-sm color-text-mutted mb-10">Banner *</label>
+                                            <input name="banner" class="form-control {{ $errors->has('banner') ? 'is-invalid' : '' }}" type="file" value="">
+                                            <x-input-error :messages="$errors->get('banner')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Company Name*</label>
-                                            <input class="form-control" type="file" value="">
+                                            <label class="font-sm color-text-mutted mb-10">Company Name *</label>
+                                            <input name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="file" value="">
+                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Company Bio*</label>
-                                            <textarea name="" class="summernote"></textarea>
+                                            <label class="font-sm color-text-mutted mb-10">Company Bio *</label>
+                                            <textarea name="bio" class="summernote {{ $errors->has('bio') ? 'is-invalid' : '' }}"></textarea>
+                                            <x-input-error :messages="$errors->get('bio')" class="mt-2" />
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Company Vision*</label>
-                                            <textarea name="" class="summernote"></textarea>
+                                            <label class="font-sm color-text-mutted mb-10">Company Vision *</label>
+                                            <textarea name="vision" class="summernote {{ $errors->has('vision') ? 'is-invalid' : '' }}"></textarea>
+                                            <x-input-error :messages="$errors->get('vision')" class="mt-2" />
                                         </div>
                                     </div>
                                 </div>
@@ -88,6 +95,8 @@
                                 </div>
                             </form>
                         </div>
+
+                        <!-- Founding Info -->
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             <form action="">
                                 <div class="row">
@@ -209,55 +218,58 @@
                                 </div>
                             </form>
                         </div>
+
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="font-sm color-text-mutted mb-10">Username: *</label>
-                                        <input type="text" class="form-controll">
+                        <!-- Account Settings -->
+                            <form action="">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Username: *</label>
+                                            <input type="text" class="form-controll">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="font-sm color-text-mutted mb-10">Email: *</label>
-                                        <input type="text" class="form-controll">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Email: *</label>
+                                            <input type="text" class="form-controll">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <button class="btn btn-default btn-shadow">Save</button>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <button class="btn btn-default btn-shadow">Save</button>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <hr>
+                                    <hr>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="font-sm color-text-mutted mb-10">Password: *</label>
-                                        <input type="password" class="form-controll">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Password: *</label>
+                                            <input type="password" class="form-controll">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="font-sm color-text-mutted mb-10">Confirm Password: *</label>
-                                        <input type="password" class="form-controll">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-sm color-text-mutted mb-10">Confirm Password: *</label>
+                                            <input type="password" class="form-controll">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <button class="btn btn-default btn-shadow">Save</button>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <button class="btn btn-default btn-shadow">Save</button>
+                                        </div>
                                     </div>
+                                    
                                 </div>
-
-                            
-
-                                
-                            </div>
+                            </form>
                         </div>
+
+                        <!-- Application Status -->
                         <div class="tab-pane fade" id="candidate-status" role="tabpanel" aria-labelledby="pills-contact-tab">Application Status</div>
                   </div>
 

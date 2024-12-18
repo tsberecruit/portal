@@ -80,3 +80,5 @@ Setting Up Company Profile Dashboard with all the neccessary tables and attribut
 # Company Dashboard Layout
 Worked on the company Dashboard HTML, and CSS Layout with all the neccessary attributes that gives every information about company.
 Used Botstrap 5 for the styling the attributes. Also incorporated Select2 template format for the layouts.
+
+# Creating Route for submitting Cmpany Info
