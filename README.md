@@ -65,5 +65,17 @@ Consists of the sidebar, navigational bar and the main content (Body).
 
 ## Setting Up the Frontend with the most important Job sections/Components.
 
-## Succesfully setup the registration UI with its authenticatin system for candidates and recruiters
+## Succesfully setup the registration, login, forgot password, reset password UIs/Authentications for candidates and recruiters
 The idea is to get users to decide which type of user role they want to access from the registration page.
+
+
+# Company Models
+Setting Up Company Profile Dashboard with all the neccessary tables and attributes.
+- Created a Migration Table for companies
+- Created a route for the company dashboard 
+- Created a route for the company profile 
+- Created a controller to redirect user to the CompanyDashboardContorller
+- Created a controller CompanyProfileContorller that redirect user to its profile.
+
+# Company Dashboard Layout
+Worked on the company Dashboard HTML, and CSS Layout with all the neccessary attributes that gives every information about company.
