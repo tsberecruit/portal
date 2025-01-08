@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\IndustryTypeController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -33,9 +34,15 @@ Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'adm
 });
 
 Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+                ->name('logout');
+    /** Dashboard Route */
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('verify-email', EmailVerificationPromptController::class)
+    /** Industry Type Route  */
+    Route::resource('industry-types', IndustryTypeController::class);
+    
+    /**Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');
 
     Route::get('verify-email/{id}/{hash}', VerifyEmailController::class)
@@ -53,6 +60,6 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
 
     Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-    Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
-                ->name('logout');
+    
+    **/
 });

@@ -90,5 +90,12 @@ Used Botstrap 5 for the styling the attributes. Also incorporated Select2 templa
 # Editing companies info and getting the fields' data displayed in the form.
 
 # Implemented Dynamic notification for submitted forms
+https://github.com/mckenziearts/laravel-notify
+
+# Implemented Dynamic Slug to avoid name matching
+https://github.com/cviebrock/eloquent-sluggable
 
 
+# Industry Types
+- Creating Neccessary Files and Designs
+- Working with Create Feature

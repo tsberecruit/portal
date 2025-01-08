@@ -97,7 +97,17 @@
                 <a href="#" class="nav-link"><i class="fas fa-fire"></i><span>Dashboard</span></a>
             </li>
             <li class="menu-header">Starter</li>
+
             <li class="dropdown">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
+                    <span>Attributes</span></a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ route('admin.industry-types.index') }}">Industry Type</a></li>
+                    
+                </ul>
+            </li>
+
+            {{--  <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>
                     <span>Layout</span></a>
                 <ul class="dropdown-menu">
@@ -107,6 +117,7 @@
                 </ul>
             </li>
             <li><a class="nav-link" href="blank.html"><i class="far fa-square"></i> <span>Blank Page</span></a></li>
+            --}}
         </ul>
     </aside>
 </div>
