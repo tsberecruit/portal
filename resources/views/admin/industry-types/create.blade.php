@@ -18,7 +18,8 @@
                             @csrf
                             <div class="form-group">
                                 <lable for="">Name</lable>
-                                <input type="text" class="form-control" name="name">
+                                <input type="text" class="form-control {{ hasError($errors, 'name') }}" name="name" value="{{ old('name') }}">
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Create</button>

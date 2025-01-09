@@ -5,6 +5,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>General Dashboard &mdash; Stisla</title>
 
+  @notifyCss
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap/css/bootstrap.min.css') }}">
   <link rel="stylesheet" href="{{ asset('admin/assets/modules/fontawesome/css/all.min.css') }}">
@@ -50,8 +51,14 @@
   <!-- JS Libraies -->
   <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
  
+  <!-- Laravel Notify starts-->
+  <x-notify::notify />
+  <!-- Laravel Notify ends-->
+  @notifyJs
+  
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <script src="assets/js/custom.js"></script>
+  
 </body>
 </html>
