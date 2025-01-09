@@ -101,4 +101,4 @@ https://github.com/cviebrock/eloquent-sluggable
 - Working with Create Feature
 - Created Helper file for Validating Users input
 - Showing all created data in the industry types' page
-- 
+- Working with Update Feature
