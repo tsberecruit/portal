@@ -27,12 +27,38 @@
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <tr>
-
+                                    <th>Name</th>
+                                    <th>Slug</th>
+                                    <th style="width: 20%">Action</th>
                                 </tr>
+                                <tbody>
+                                    @foreach ($industryTypes as $type)
+                                    <tr>
+                                        <td>{{ $type->name }}</td>
+                                        <td>{{ $type->slug }}</td>
+                                        <td>
+                                            <a href="" class="btn-small btn btn-primary"><i class="fas fa-edit"></i></a>
+                                            <a href="" class="btn-small btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    
+                                    
+                                </tbody>
 
                             </table>
                         </div>
                     </div>
+
+                    <div class="card-footer text-right">
+                        <nav class="d-inline-block">
+                            @if($industryTypes->hasPages())
+                                {{ $industryTypes->links() }}
+                            @endif
+                        </nav>
+                        
+                      </div>
+
                 </div>
             </div>
         </div>

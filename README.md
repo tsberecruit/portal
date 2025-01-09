@@ -99,3 +99,6 @@ https://github.com/cviebrock/eloquent-sluggable
 # Industry Types
 - Creating Neccessary Files and Designs
 - Working with Create Feature
+- Created Helper file for Validating Users input
+- Showing all created data in the industry types' page
+- 

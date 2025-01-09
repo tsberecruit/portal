@@ -17,7 +17,8 @@ class IndustryTypeController extends Controller
      */
     public function index() : View
     {
-        return view('admin.industry-types.index');
+        $industryTypes = IndustryType::paginate(20);
+        return view('admin.industry-types.index', compact('industryTypes'));
     }
 
     /**
