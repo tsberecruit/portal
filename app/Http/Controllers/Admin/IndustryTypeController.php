@@ -7,17 +7,21 @@ use App\Models\IndustryType;
 use App\Services\Notify;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Traits\Searchable;
 use Illuminate\Http\RedirectResponse;
 
 
 class IndustryTypeController extends Controller
 {
+    use searchable;
     /**
      * Display a listing of the resource.
      */
-    public function index() : View
+    public function index(Request $request) : View
     {
-        $industryTypes = IndustryType::paginate(20);
+        $query = IndustryType::query();
+        $this->search($query, ['name']);
+        $industryTypes = $query->paginate(1);
         return view('admin.industry-types.index', compact('industryTypes'));
     }
 
@@ -47,7 +51,7 @@ class IndustryTypeController extends Controller
         return to_route('admin.industry-types.index');
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -81,6 +85,13 @@ class IndustryTypeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            IndustryType::findOrFail($id)->delete();
+            Notify::deletedNotification();
+            return response(['message' => 'success'], 200);
+        }catch(\Exception $e) {
+            logger($e);
+            return response(['message' => 'Something Went Wrong. Please, Try Again!'], 500);
+        }
     }
 }
