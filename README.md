@@ -113,3 +113,7 @@ https://github.com/cviebrock/eloquent-sluggable
 # Team Size
 - Working with Teamsizes
 - Creating Neccessary Files and Seeders
+
+# Location
+- Creating Database and Inserting Data from the Backend
+- Working with Index Page
