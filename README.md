@@ -117,3 +117,5 @@ https://github.com/cviebrock/eloquent-sluggable
 # Location
 - Creating Database and Inserting Data from the Backend
 - Working with Index Page
+- Working with create, update and Delete Feature
+
