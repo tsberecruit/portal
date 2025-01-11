@@ -109,3 +109,7 @@ https://github.com/cviebrock/eloquent-sluggable
 - Creating Neccessary Files and Designs
 - Working with Create Feature
 - Working with Edit and Delete Feature
+
+# Team Size
+- Working with Teamsizes
+- Creating Neccessary Files and Seeders
