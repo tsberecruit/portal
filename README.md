@@ -104,3 +104,8 @@ https://github.com/cviebrock/eloquent-sluggable
 - Working with Update Feature
 - Working with Delete Feature
 - Working with Search feature 
+
+# Organization Types
+- Creating Neccessary Files and Designs
+- Working with Create Feature
+- Working with Edit and Delete Feature

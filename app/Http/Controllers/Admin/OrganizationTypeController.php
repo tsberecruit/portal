@@ -3,26 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\IndustryType;
-use App\Services\Notify;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\OrganizationType;
+use App\Services\Notify;
 use App\Traits\Searchable;
+use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 
-
-class IndustryTypeController extends Controller
+class OrganizationTypeController extends Controller
 {
-    use searchable;
+    use Searchable;
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request) : View
+    public function index() : View
     {
-        $query = IndustryType::query();
+        $query = OrganizationType::query();
+
         $this->search($query, ['name']);
-        $industryTypes = $query->paginate(5);
-        return view('admin.industry-types.index', compact('industryTypes'));
+
+        $organizationTypes = $query->paginate(5);
+        return view('admin.organization-types.index', compact('organizationTypes'));
     }
 
     /**
@@ -30,7 +32,7 @@ class IndustryTypeController extends Controller
      */
     public function create() : View
     {
-        return view('admin.industry-types.create');
+        return view('admin.organization-types.create');
     }
 
     /**
@@ -39,27 +41,25 @@ class IndustryTypeController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'max:255', 'unique:industry_types,name']
+            'name' => ['required', 'max:255', 'unique:organization_types,name']
         ]);
-        $type = new IndustryType();
+
+        $type = new OrganizationType();
         $type->name = $request->name;
         $type->save();
 
-
         Notify::createdNotification();
 
-        return to_route('admin.industry-types.index');
+        return to_route('admin.organization-types.index');
     }
-
-
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id) : View
     {
-        $industryTypes = IndustryType::findOrFail($id);
-        return view('admin.industry-types.edit', compact('industryTypes'));
+        $organizationTypes = OrganizationType::findOrFail($id);
+        return view('admin.organization-types.edit', compact('organizationTypes'));
     }
 
     /**
@@ -68,25 +68,25 @@ class IndustryTypeController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => ['required', 'max:255', 'unique:industry_types,name,'.$id]
+            'name' => ['required', 'max:255', 'unique:organization_types,name,'.$id]
         ]);
-        $type = IndustryType::findOrFail($id);
+
+        $type = OrganizationType::findOrFail($id);
         $type->name = $request->name;
         $type->save();
 
-
         Notify::updatedNotification();
 
-        return to_route('admin.industry-types.index');
+        return to_route('admin.organization-types.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : Response
     {
         try {
-            IndustryType::findOrFail($id)->delete();
+            OrganizationType::findOrFail($id)->delete();
             Notify::deletedNotification();
             return response(['message' => 'success'], 200);
         }catch(\Exception $e) {
