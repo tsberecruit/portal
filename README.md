@@ -119,6 +119,7 @@ https://github.com/cviebrock/eloquent-sluggable
 - Working with Index Page
 - Working with create, update and Delete Feature for Country
 - Updating the index Page
+- Setting up index page for State Location
 - Working with create, update and Delete Feature for State
 - 
 
