@@ -115,7 +115,10 @@ https://github.com/cviebrock/eloquent-sluggable
 - Creating Neccessary Files and Seeders
 
 # Location
-- Creating Database and Inserting Data from the Backend
+- Creating Database and Inserting Data(Countr, State, and City) from the Backend
 - Working with Index Page
-- Working with create, update and Delete Feature
+- Working with create, update and Delete Feature for Country
+- Updating the index Page
+- Working with create, update and Delete Feature for State
+- 
 
