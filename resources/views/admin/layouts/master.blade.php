@@ -55,6 +55,13 @@
     <script src="{{ asset('admin/assets/modules/summernote/summernote-bs4.js') }}"></script>
     <script src="{{ asset('admin/assets/modules/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ asset('admin/assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
+    
+    <!-- Template JS File -->
+    <script src="assets/js/scripts.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    @stack('scripts')
+    
     <script>
         $(".delete-item").on('click', function(e) {
             e.preventDefault();
@@ -95,9 +102,7 @@
     <!-- Laravel Notify ends-->
     @notifyJs
 
-    <!-- Template JS File -->
-    <script src="assets/js/scripts.js"></script>
-    <script src="assets/js/custom.js"></script>
+    
 
 </body>
 
