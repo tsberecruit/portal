@@ -11,6 +11,7 @@ use App\Models\Country;
 use App\Models\State;
 use App\Models\City;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 
 class CityController extends Controller
 {
@@ -21,7 +22,7 @@ class CityController extends Controller
     public function index() : View
     {
         $query = City::query();
-        $query->with('country', 'state');
+        $query->with(['country', 'state']);
         $this->search($query, ['name']);
         $cities = $query->orderBy('id', 'DESC')->paginate(20);
         return view('admin.location.city.index', compact('cities'));
@@ -42,17 +43,19 @@ class CityController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'max:255'],
+            'country' => ['required', 'integer'],
             'state' => ['required', 'integer'],
-            'country' => ['required', 'integer']
+            'city' => ['required', 'string', 'max:255']
         ]);
 
         $city = new City();
-        $city->name = $request->name;
+        $city->name = $request->city;
         $city->state_id = $request->state;
         $city->country_id = $request->country;
         $city->save();
         Notify::createdNotification();
+
+
 
         return to_route('admin.cities.index');
     }
@@ -63,10 +66,10 @@ class CityController extends Controller
      */
     public function edit(string $id)
     {
+        $city = City::findOrFail($id);
         $countries = Country::all();
-        $states = State::all();
-        $cities = City::findOrFail($id);
-        return view('admin.location.city.edit', compact('countries', 'states', 'cities'));
+        $states = State::where('country_id', $city->country_id)->get();
+        return view('admin.location.city.edit', compact('countries', 'city', 'states'));
     }
 
     /**
@@ -75,17 +78,19 @@ class CityController extends Controller
     public function update(Request $request, string $id) : RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'max:255'],
+            'country' => ['required', 'integer'],
             'state' => ['required', 'integer'],
-            'country' => ['required', 'integer']
+            'city' => ['required', 'string', 'max:255']
         ]);
 
         $city = City::findOrFail($id);
-        $city->name = $request->name;
+        $city->name = $request->city;
         $city->state_id = $request->state;
         $city->country_id = $request->country;
         $city->save();
-        Notify::updatedNotification();
+        Notify::UpdatedNotification();
+
+
 
         return to_route('admin.cities.index');
     }
@@ -93,10 +98,10 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id) : Response
     {
         try {
-            city::findOrFail($id)->delete();
+            City::findOrFail($id)->delete();
             Notify::deletedNotification();
             return response(['message' => 'success'], 200);
         }catch(\Exception $e) {

@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <lable for="">State</lable>
+                                        <lable for="">States</lable>
                                         <select name="state" id="" class="form-control select2 state {{ hasError($errors, 'state') }}">
                                             <option value="">Select</option>
 
@@ -74,7 +74,7 @@
                     let html = '';
 
                     $.each(response, function(index, value) {
-                        html += `<option value"$(value.id)" >${value.name}</option>`
+                        html += `<option value="${value.id}" >${value.name}</option>`
                     });
                     $('.state').html(html);
 

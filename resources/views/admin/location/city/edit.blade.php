@@ -14,38 +14,39 @@
 
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('admin.cities.update', $cities->id) }}" method="post">
+                        <form action="{{ route('admin.cities.update', $city->id) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <lable for="">Country</lable>
-                                        <select name="country" id="" class="form-control select2 {{ hasError($errors, 'country') }}">
+                                        <select name="country" id="" class="form-control select2 country {{ hasError($errors, 'country') }}">
                                             <option value="">Select</option>
                                             @foreach ($countries as $country)
-                                            <option @selected($cities->country_id === $country->id) value="{{ $country->id }}">{{ $country->name }}</option>
+                                                <option @selected($country->id === $city->country_id) value="{{ $country->id }}">{{ $country->name }}</option>
                                             @endforeach
                                         </select>
                                         <x-input-error :messages="$errors->get('country')" class="mt-2" />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <lable for="">State</lable>
-                                        <select name="state" id="" class="form-control select2 {{ hasError($errors, 'state') }}">
+                                        <lable for="">States</lable>
+                                        <select name="state" id="" class="form-control select2 state {{ hasError($errors, 'state') }}">
                                             <option value="">Select</option>
                                             @foreach ($states as $state)
-                                            <option @selected($cities->state_id === $state->id) value="{{ $state->id }}">{{ $state->name }}</option>
+                                            <option @selected($state->id === $city->state_id) value="{{ $state->id }}">{{ $state->name }}</option>
                                             @endforeach
+
                                         </select>
                                         <x-input-error :messages="$errors->get('state')" class="mt-2" />
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <lable for="">City Name</lable>
-                                        <input type="text" class="form-control {{ hasError($errors, 'name') }}" name="name" value="{{ old('name', $cities->name) }}">
+                                        <input type="text" class="form-control {{ hasError($errors, 'city') }}" name="city" value="{{ old('city', $city->name) }}">
                                         <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                     </div>
                                 </div>
@@ -61,3 +62,32 @@
     </section>
 
 @endsection
+
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('.country').on('change', function() {
+            let country_id = $(this).val();
+
+            $.ajax({
+                method: 'GET',
+                url: '{{ route("admin.get-states", ":id") }}'.replace(":id", country_id),
+                data: {},
+                success: function(response) {
+                    let html = '';
+
+                    $.each(response, function(index, value) {
+                        html += `<option value="${value.id}" >${value.name}</option>`
+                    });
+                    $('.state').html(html);
+
+                },
+                error: function(xhr, status, error) {
+
+                }
+
+            })
+        })
+    })
+</script>
+@endpush
