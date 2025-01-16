@@ -22,10 +22,10 @@ class CompanyFoundingInfUpdateRequest extends FormRequest
             'website' => ['required', 'active_url'],
             'email' => ['required', 'email'],
             'phone' => ['required'],
-            'country' => ['string', 'max:100'],
-            'state' => ['string', 'max:100'],
-            'city' => ['string', 'max:100'],
-            'address' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'integer'],
+            'state' => ['nullable', 'integer'],
+            'city' => ['nullable', 'integer'],
+            'address' => ['string', 'max:255'],
             'map_link' => ['nullable'],
         ];
     }

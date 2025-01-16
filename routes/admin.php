@@ -15,7 +15,10 @@ use App\Http\Controllers\Admin\OrganizationTypeController;
 use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\CityController;
+use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\SkillController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['guest:admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -59,6 +62,15 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** City Route  */
     Route::resource('cities', CityController::class);
     Route::get('get-states/{country_id}', [LocationController::class, 'getStatesOfCountry'])->name('get-states');
+
+    /** Language Route  */
+    Route::resource('languages', LanguageController::class);
+
+    /** Profession Route  */
+    Route::resource('professions', ProfessionController::class);
+
+    /** Skill Controller Route  */
+    Route::resource('skills', SkillController::class);
 
     /**Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');

@@ -2,15 +2,13 @@
 
 namespace App\Models;
 
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
-class IndustryType extends Model
+class Profession extends Model
 {
-    use HasFactory, Sluggable;
-
-    protected $fillable = ['name'];
+    use HasFactory, sluggable;
 
     public function sluggable(): array
     {
