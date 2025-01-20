@@ -121,5 +121,26 @@ https://github.com/cviebrock/eloquent-sluggable
 - Updating the index Page
 - Setting up index page for State Location
 - Working with create, update and Delete Feature for State
+
+# Sidebar Activation
+- Working with the Admin Activation
+
+# Completed Company Profile
+- Added Seeders for Tables
+- Made some changes in migration
+- Worked on some of the Company's profile attributes
+
+# Candidate Profile Attributes
+- Brainstormed on the Database Model Diragram
+- Created Neccessary Files and Designs
+- Worked with the Create, update, Delete feature
+- Adding Seeders
+
+# Candidate Profile Setup
+- Creating Neccessary files and Designs
+- Creating Migration and adding Columns
+- Worked with Candidate Basic Info
+- Worked with Candidate's Profile form and integrating CKEditor for BIO attribute
+- Fixing Data Save issue
 - 
 

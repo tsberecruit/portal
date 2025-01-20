@@ -36,7 +36,7 @@
                         </li>
                         <li class="nav-item" role="presentation">
                             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
-                                data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                                data-bs-target="#pills-experience" type="button" role="tab" aria-controls="pills-profile"
                                 aria-selected="false">Experience & Education</button>
                         </li>
                         <li class="nav-item" role="presentation">
@@ -52,215 +52,12 @@
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <!-- Company Info -->
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
-                            aria-labelledby="pills-home-tab">
-                            <form action="" method="post"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="row">
-
-                                    <div class="col-md-6">
-                                        {{-- <x-image-preview :height="200" :width="200" :source="$companyInfo?->logo" /> --}}
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Logo *</label>
-                                            <input name="logo"
-                                                class="form-control {{ $errors->has('logo') ? 'is-invalid' : '' }}"
-                                                type="file" value="">
-                                            <x-input-error :messages="$errors->get('logo')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Company Name *</label>
-                                            <input name="name" class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" value="">
-                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="box-button mt-15">
-                                    <button class="btn btn-apply-big font-md font-bold">Save All Changes</button>
-                                </div>
-                            </form>
-                        </div>
-
-                        <!-- Founding Info -->
-                        {{--<div class="tab-pane fade" id="pills-profile" role="tabpanel"
-                            aria-labelledby="pills-profile-tab">
-                            <form action="{{ route('company.profile.founding-info') }}" method="post"
-                                enctype="multipart/form-data">
-                                @csrf
-                                <div class="row">
-
-                                    <div class="col-md-4">
-                                        <div class="form-group select-style">
-                                            <label class="font-sm color-text-mutted mb-10">Industry Type*</label>
-                                            <select name="industry_type" id=""
-                                                class="form-control form-icons select-active {{ $errors->has('industry_type') ? 'is-invalid' : '' }}">
-                                                <option value="">Select</option>
-                                                @foreach ($industryTypes as $industryType)
-                                                    <option @selected($industryType->id === $companyInfo?->industry_type_id) value="{{ $industryType->id }}">
-                                                        {{ $industryType->name }}</option>
-                                                @endforeach
-
-
-                                            </select>
-                                            <x-input-error :messages="$errors->get('industry_type')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group select-style">
-                                            <label class="font-sm color-text-mutted mb-10">Organization Type*</label>
-                                            <select name="organization_type" id=""
-                                                class="form-control form-icons select-active {{ $errors->has('organization_type') ? 'is-invalid' : '' }}">
-                                                <option value="">Select</option>
-                                                @foreach ($organziationTypes as $organizationType)
-                                                    <option @selected($organizationType->id === $companyInfo?->organization_type_id)
-                                                        value="{{ $organizationType->id }}">{{ $organizationType->name }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            <x-input-error :messages="$errors->get('organization_type')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group select-style">
-                                            <label class="font-sm color-text-mutted mb-10">Team Size*</label>
-                                            <select name="team_size" id=""
-                                                class="form-control form-icons select-active {{ $errors->has('team_size') ? 'is-invalid' : '' }}">
-                                                <option value="">Select</option>
-                                                @foreach ($teamSizes as $teamSize)
-                                                    <option @selected($teamSize->id === $companyInfo?->team_size_id) value="{{ $teamSize->id }}">
-                                                        {{ $teamSize->name }}</option>
-                                                @endforeach
-                                            </select>
-                                            <x-input-error :messages="$errors->get('team_size')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Establishment Date</label>
-                                            <input name="establishment_date" type="text"
-                                                class="form-controll datepicker {{ $errors->has('establishment_date') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->establishment_date }}">
-                                            <x-input-error :messages="$errors->get('establishment_date')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Website</label>
-                                            <input name="website" type="text"
-                                                class="form-controll {{ $errors->has('website') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->website }}">
-                                            <x-input-error :messages="$errors->get('website')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Email</label>
-                                            <input name="email" type="email"
-                                                class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->email }}">
-                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Phone Request *</label>
-                                            <input name="phone" type="tel"
-                                                class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->phone }}">
-                                            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group select-style">
-                                            <label class="font-sm color-text-mutted mb-10">Country *</label>
-                                            <select name="country" id=""
-                                                class="form-control form-icons country select-active {{ $errors->has('country') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->country }}">
-                                                <option value="">Select</option>
-                                                @foreach ($countries as $country)
-                                                    <option @selected($country->id === $companyInfo?->country) value="{{ $country->id }}">
-                                                        {{ $country->name }}</option>
-                                                @endforeach
-
-                                            </select>
-                                            <x-input-error :messages="$errors->get('country')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group select-style">
-                                            <label class="font-sm color-text-mutted mb-10">State</label>
-                                            <select name="state" id=""
-                                                class="form-control state form-icons select-active {{ $errors->has('state') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->state }}">
-                                                <option value="">Select</option>
-                                                @foreach ($states as $state)
-                                                    <option @selected($state->id === $companyInfo?->state) value="{{ $state->id }}">
-                                                        {{ $state->name }}</option>
-                                                @endforeach
-
-
-                                            </select>
-                                            <x-input-error :messages="$errors->get('state')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group select-style">
-                                            <label class="font-sm color-text-mutted mb-10">City</label>
-                                            <select name="city" id=""
-                                                class="form-control city form-icons select-active {{ $errors->has('city') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->city }}">
-                                                <option value="">Select</option>
-                                                @foreach ($cities as $city)
-                                                    <option @selected($city->id === $companyInfo?->city) value="{{ $city->id }}">
-                                                        {{ $city->name }}</option>
-                                                @endforeach
-
-                                            </select>
-                                            <x-input-error :messages="$errors->get('city')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Address</label>
-                                            <input name="address" type="text"
-                                                class="form-controll {{ $errors->has('address') ? 'is-invalid' : '' }}"
-                                                value="{{ $companyInfo?->address }}">
-                                            <x-input-error :messages="$errors->get('address')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Map Link</label>
-                                            <input name="map_link" type="text" class="form-controll"
-                                                value="{{ $companyInfo?->map_link }}">
-                                        </div>
-                                    </div>
+                        @include('frontend.candidate-dashboard.profile.sections.basic-section')
+                        @include('frontend.candidate-dashboard.profile.sections.profile-section')
+                        @include('frontend.candidate-dashboard.profile.sections.experience-section')
 
 
 
-                                </div>
-
-                                <div class="box-button mt-15">
-                                    <button class="btn btn-apply-big font-md font-bold">Save All Changes</button>
-                                </div>
-                            </form>
-                        </div>--}}
 
                         <!-- Account Settings -->
                         {{--<div class="tab-pane fade" id="pills-contact" role="tabpanel"
@@ -326,13 +123,13 @@
 
                             </div>
                           </form>
-                    </div>--}}
+                        </div>--}}
 
-                    <!-- Application Status -->
-                    {{--<div class="tab-pane fade" id="candidate-status" role="tabpanel"
-                        aria-labelledby="pills-contact-tab">Application Status
-                    </div>--}}
-                </div>
+                        <!-- Application Status -->
+                        {{--<div class="tab-pane fade" id="candidate-status" role="tabpanel"
+                            aria-labelledby="pills-contact-tab">Application Status
+                        </div>--}}
+                    </div>
             </div>
         </div>
         </div>
