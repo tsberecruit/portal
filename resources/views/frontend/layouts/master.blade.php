@@ -14,15 +14,21 @@
   <meta name="author" content="">
   <link rel="shortcut icon" type="image/x-icon" href="">
 
-  @notifyCss
   <link href="{{ asset('frontend/assets/css/all.min.css') }}" rel="stylesheet">
   <link href="{{ asset('frontend/assets/css/style.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker3.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 
   <title>TSB-Erecruit - Job Portal </title>
 </head>
 
 <body>
+
+    <div class="preloader_demo d-none">
+        <div class="img">
+          <img src="{{ asset('frontend/assets/imgs/template/pre-loading.gif') }}" alt="joblist">
+        </div>
+      </div>
 
   <div id="preloader-active">
     <div class="preloader d-flex align-items-center justify-content-center">
@@ -80,26 +86,14 @@
   <script src="{{ asset('frontend/assets/js/pluggins/counterup.js') }}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
-  <!-- Laravel Notify starts-->
-  <x-notify::notify />
-  <!-- Laravel Notify ends-->
-  @notifyJs
+  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+  <script src="https:/cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 
   @stack('scripts')
 
-  <script>
-     $('.datepicker').datepicker({
-        format: 'yyyy-m-d',
-     });
-
-     ClassicEditor
-     .create( document.querySelector('#editor' ) )
-     .catch( error => {
-        console.error( error );
-     })
-  </script>
+  @include('frontend.layouts.scripts')
 </body>
 
 </html>

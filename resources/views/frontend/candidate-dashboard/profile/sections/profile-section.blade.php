@@ -64,7 +64,7 @@
                                 <option value="">Select one</option>
                                 @foreach ($skills as $skill)
                                     @php
-                                        $candidateSkills = $candidate->skills->pluck('skill_id')->toArray() ?? [];
+                                        $candidateSkills = $candidate?->skills->pluck('skill_id')->toArray() ?? [];
                                     @endphp
 
                                     <option @selected(in_array($skill->id, $candidateSkills)) value="{{ $skill->id }}">{{ $skill->name }}</option>

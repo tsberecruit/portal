@@ -38,12 +38,16 @@ class CandidateProfileController extends Controller
      */
     function index() : view
     {
+        $candidate = Candidate::with(['skills'])->where('user_id', auth()->user()?->id)->first();
+        $candidateExperiences = CandidateExperience::where('candidate_id', $candidate?->id)->orderBy('id', 'DESC')->get();
+
+
         $experiences = Experience::all();
         $professions = Profession::all();
-        $candidate = Candidate::with(['skills'])->where('user_id', auth()->user()->id)->first();
+        $candidate = Candidate::with(['skills'])->where('user_id', auth()->user()?->id)->first();
         $skills = Skill::all();
         $languages = Language::all();
-        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experiences', 'professions', 'skills', 'languages'));
+        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experiences', 'professions', 'skills', 'languages', 'candidateExperiences'));
     }
 
     /** update basic info of candidate profile */
@@ -67,7 +71,7 @@ class CandidateProfileController extends Controller
             $data
         );
 
-        $this->updateProfileStatus();
+
 
         Notify::updatedNotification();
 
@@ -109,7 +113,7 @@ class CandidateProfileController extends Controller
             $candidateSkill->save();
         }
 
-        
+
 
         Notify::updatedNotification();
 

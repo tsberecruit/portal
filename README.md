@@ -142,5 +142,7 @@ https://github.com/cviebrock/eloquent-sluggable
 - Worked with Candidate Basic Info
 - Worked with Candidate's Profile form and integrating CKEditor for BIO attribute
 - Fixing Data Save issue
+
+# Candidate Experience and Education
 - 
 

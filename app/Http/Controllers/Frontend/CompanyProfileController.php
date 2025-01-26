@@ -15,10 +15,11 @@ use Illuminate\Validation\Rules;
 use App\Models\IndustryType;
 use App\Models\OrganizationType;
 use App\Models\TeamSize;
-use App\Services\Notify;
+use App\Services\Notyf;
 use App\Models\Country;
 use App\Models\State;
 use App\Models\City;
+use App\Services\Notify;
 
 class CompanyProfileController extends Controller
 {
@@ -58,7 +59,7 @@ class CompanyProfileController extends Controller
             $companyProfile->save();
         }
 
-        notify()->success('Updated Successfully ⚡️', 'Success');
+        Notify::updatedNotification();
 
         return redirect()->back();
 
@@ -105,7 +106,7 @@ class CompanyProfileController extends Controller
         ]);
         Auth::user()->update($validateData);
 
-        notify()->success('Updated Successfully ⚡️', 'Success');
+        notify::updatedNotification();
 
         return redirect()->back();
     }
@@ -118,7 +119,7 @@ class CompanyProfileController extends Controller
 
         Auth::user()->update(['passwrd' => bcrypt($request->password)]);
 
-        notify()->success('Updated Successfully ⚡️', 'Success');
+        Notify::updatedNotification();
 
         return redirect()->back();
     }
