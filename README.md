@@ -147,6 +147,6 @@ https://github.com/cviebrock/eloquent-sluggable
 - Creating neccessary files and creating Candidate Experience Dynamically
 - Working with Candidate Experience Module
 - Working with Candidate Education Module
-
+- Working with Candidate Account Settings
 
 
