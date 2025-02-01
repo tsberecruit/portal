@@ -58,84 +58,13 @@
 
 
 
-
-                        <!-- Account Settings -->
-                        {{-- <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                            aria-labelledby="pills-contact-tab">
-                            <form action="{{ route('company.profile.account-info') }}"
-                                method="POST"enctype="multipart/form-data">
-                                @csrf
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Username: *</label>
-                                            <input type="text" name="name"
-                                                class="form-controll {{ $errors->has('name') ? 'is-invalid' : '' }}"
-                                                value="{{ auth()->user()?->name }}">
-                                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label class="font-sm color-text-mutted mb-10">Email: *</label>
-                                            <input type="text" name="email"
-                                                class="form-controll {{ $errors->has('email') ? 'is-invalid' : '' }}"
-                                                value="{{ auth()->user()?->email }}">
-                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <button class="btn btn-default btn-shadow">Save</button>
-                                        </div>
-                                    </div>
-                            </form>
-
-                            <hr>
-                            <form action="{{ route('company.profile.password-update') }}"
-                                method="POST"enctype="multipart/form-data">
-                                @csrf
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="font-sm color-text-mutted mb-10">Password: *</label>
-                                        <input name="password" type="password"
-                                            class="form-controll {{ $errors->has('password') ? 'is-invalid' : '' }}">
-                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="font-sm color-text-mutted mb-10">Confirm Password: *</label>
-                                        <input name="password_confirmation" type="password"
-                                            class="form-controll {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}">
-                                        <x-input-error :messages="$errors->get('password_confirmatin')" class="mt-2" />
-                                    </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <button class="btn btn-default btn-shadow">Save</button>
-                                    </div>
-                                </div>
-
-                            </div>
-                          </form>
-                        </div> --}}
-
-                        <!-- Application Status -->
-                        {{-- <div class="tab-pane fade" id="candidate-status" role="tabpanel"
-                            aria-labelledby="pills-contact-tab">Application Status
-                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-
-        <!-- Modal -->
+        <!-- Experience Modal -->
         <div class="modal fade" id="experienceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
@@ -206,21 +135,78 @@
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
+                    {{-- <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary">Understood</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
 
-    </section>
+
+        <!-- Education Modal -->
+        <div class="modal fade" id="educationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Add Education</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <form action="" id="EducationForm">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Level *</label>
+                                <input type="text" class="from-control" required="" name="level" id="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Degree *</label>
+                                <input type="text" class="from-control" required="" name="degree" id="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Year *</label>
+                                <input type="text" class="from-control yearpicker" required="" name="year" id="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="">Note</label>
+                                <textarea name="note" maxlength="500" id="" class="from-control" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Eduction</button>
+                    </div>
+                </form>
+                </div>
+
+            </div>
+            </div>
+        </div>
 @endsection
 
 @push('scripts')
     <script>
+
         // Save experience data
-        $(document).ready(function() {
+
+
+        /**
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         * All CRUD METHOD FOR CANDIDATE EXPEREINCE STARTS
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         **/
+
             var editId = "";
             var editMode = false;
 
@@ -238,6 +224,7 @@
                     }
                 })
             }
+
             // Save experience data
             $('#ExperienceForm').on('submit', function(event) {
                 event.preventDefault();
@@ -330,11 +317,6 @@
                 })
             })
 
-
-
-
-
-
             // Delete Items
             $("body").on('click', '.delete-experience', function(e) {
                 e.preventDefault();
@@ -379,7 +361,198 @@
                 });
             });
 
+        /**
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         * All CRUD METHOD FOR CANDIDATE EXPEREINCE ENDS
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         **/
 
-        })
+
+
+        /**
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         * All CRUD METHOD FOR CANDIDATE EDUCATION STARTS
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         **/
+
+
+
+
+
+
+         // Fetch Education
+         function fetchEducation() {
+                $.ajax({
+                    method: 'GET',
+                    url: "{{ route('candidate.education.index') }}",
+                    data: {},
+                    success: function(response) {
+                        $('.education-tbody').html(response);
+                    },
+                    error: function(xhr, status, error) {
+
+                    }
+                })
+            }
+
+            // Save Education data
+            $('#EducationForm').on('submit', function(event) {
+                event.preventDefault();
+                const formData = $(this).serialize();
+
+                if (editMode) {
+                    $.ajax({
+                        method: 'PUT',
+                        url: "{{ route('candidate.education.update', ':id') }}".replace(':id',
+                            editId),
+                        data: formData,
+                        beforeSend: function() {
+                            showLoader();
+                        },
+                        success: function(response) {
+                            fetchEducation();
+
+                            $('#EducationForm').trigger("reset");
+                            $('#educationModal').modal('hide');
+                            editId = "";
+                            editMode = false;
+
+                            hideLoader();
+                            notyf.success(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            hideLoader();
+                            console.log(error)
+                        }
+
+                    })
+                } else {
+                    $.ajax({
+                        method: 'POST',
+                        url: "{{ route('candidate.education.store') }}",
+                        data: formData,
+                        beforeSend: function() {
+                            showLoader();
+                        },
+                        success: function(response) {
+                            fetchEducation();
+                            $('#ExperienceForm').trigger("reset");
+                            $('#educationModal').modal('hide');
+
+                            hideLoader();
+                            notyf.success(response.message);
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(error);
+                            hideLoader();
+                        }
+                    })
+                }
+
+            });
+
+
+            // Edit Education Data
+            $('body').on('click', '.edit-education', function() {
+                $('#EducationForm').trigger("reset");
+
+                let url = $(this).attr('href');
+
+                $.ajax({
+                    method: 'GET',
+                    url: url,
+                    data: {},
+                    beforeSend: function() {
+                        showLoader();
+                    },
+                    success: function(response) {
+                        editId = response.id
+                        editMode = true;
+
+                        $.each(response, function(index, value) {
+                            $(`input[name="${index}"]:text`).val(value);
+
+                            if (index === 'note') {
+                                $(`textarea[name="${index}"]`).val(value);
+                            }
+                        })
+                        hideLoader();
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        hideLoader();
+                    }
+                })
+            })
+
+
+            //Delete Education Item
+            $("body").on('click', '.delete-education', function(e) {
+                e.preventDefault();
+
+                let url = $(this).attr('href');
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            method: 'DELETE',
+                            url: url,
+                            data: {
+                                _token: "{{ csrf_token() }}"
+                            },
+                            beforeSend: function() {
+                                showLoader();
+                            },
+                            success: function(response) {
+                                fetchEducation();
+                                hideLoader();
+                                notyf.success(response.message);
+                            },
+                            error: function(xhr, status, error) {
+                                console.log(xhr);
+                                swal(xhr.responseJSON.message, {
+                                    icon: 'error',
+                                });
+                                hideLoader();
+
+                            }
+                        })
+                    }
+                });
+            });
+
+
+
+         /**
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         * All CRUD METHOD FOR CANDIDATE EDUCATION ENDS
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         **/
+
+
+
+         /**
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         * All CRUD METHOD FOR CANDIDATE EDUCATION ENDS
+         * -----------------------------------------------------
+         * -----------------------------------------------------
+         **/
+
     </script>
 @endpush

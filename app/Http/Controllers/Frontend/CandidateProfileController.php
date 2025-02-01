@@ -40,6 +40,7 @@ class CandidateProfileController extends Controller
     {
         $candidate = Candidate::with(['skills'])->where('user_id', auth()->user()?->id)->first();
         $candidateExperiences = CandidateExperience::where('candidate_id', $candidate?->id)->orderBy('id', 'DESC')->get();
+        $candidateEducation = CandidateEducation::where('candidate_id', $candidate?->id)->orderBy('id', 'DESC')->get();
 
 
         $experiences = Experience::all();
@@ -47,7 +48,7 @@ class CandidateProfileController extends Controller
         $candidate = Candidate::with(['skills'])->where('user_id', auth()->user()?->id)->first();
         $skills = Skill::all();
         $languages = Language::all();
-        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experiences', 'professions', 'skills', 'languages', 'candidateExperiences'));
+        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experiences', 'professions', 'skills', 'languages', 'candidateExperiences', 'candidateEducation'));
     }
 
     /** update basic info of candidate profile */

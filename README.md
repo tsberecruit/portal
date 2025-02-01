@@ -144,5 +144,9 @@ https://github.com/cviebrock/eloquent-sluggable
 - Fixing Data Save issue
 
 # Candidate Experience and Education
-- 
+- Creating neccessary files and creating Candidate Experience Dynamically
+- Working with Candidate Experience Module
+- Working with Candidate Education Module
+
+
 

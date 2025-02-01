@@ -6,9 +6,15 @@
     **/
     // Create an instance of Notyf
     var notyf = new Notyf();
-
+    // Date Picker
      $('.datepicker').datepicker({
         format: 'yyyy-m-d',
+     });
+
+     $('.yearpicker').datepicker({
+        format: "yyyy",
+        viewMode: "years",
+        minViewMode: "years"
      });
 
      ClassicEditor

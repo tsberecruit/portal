@@ -1,4 +1,4 @@
-@forelse ($candidateExperiences as $experience)
+@foreach ($candidateExperiences as $experience)
     <tr>
         <td>{{ $experience->company }}</td>
         <td>{{ $experience->department }}</td>
@@ -13,8 +13,4 @@
         </td>
 
     </tr>
-@empty
-    <tr>
-        <td colspan="5" class="text-center">No Data Found</td>
-    </tr>
-@endforelse
+@endforeach
