@@ -150,3 +150,10 @@ https://github.com/cviebrock/eloquent-sluggable
 - Working with Candidate Account Settings
 
 
+# Developing Frontend Profile Pages
+- Showing Dynamic Data in Companies ProfilePage
+- Showing Dynamic Data in Companies Details Page
+- Showing Dynamic Data in Candidates Profile Page
+- Showing Dynamic Data in Companies Details page
+
+

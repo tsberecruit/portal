@@ -31,8 +31,8 @@ class CompanyProfileController extends Controller
         $organziationTypes = OrganizationType::all();
         $teamSizes = TeamSize::all();
         $countries = Country::all();
-        $states = State::select(['id', 'name', 'country_id'])->where('country_id', $companyInfo->country)->get();
-        $cities = City::select(['id', 'name', 'state_id', 'country_id'])->where('state_id', $companyInfo->state)->get();
+        $states = State::select(['id', 'name', 'country_id'])->where('country_id', $companyInfo?->country)->get();
+        $cities = City::select(['id', 'name', 'state_id', 'country_id'])->where('state_id', $companyInfo?->state)->get();
         return view('frontend.company-dashboard.profile.index', compact('companyInfo', 'industryTypes', 'organziationTypes', 'teamSizes', 'countries', 'states', 'cities'));
     }
     function updateCompanyInfo(CompanyInfoUpdateRequest $request) : RedirectResponse
