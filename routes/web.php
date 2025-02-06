@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
+use App\Http\Controllers\Frontend\PricingPageController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -42,6 +43,7 @@ Route::get('companies/{slug}', [FrontendCompanyPageController::class, 'show'])->
 Route::get('candidates', [FrontendCandidatePageController::class, 'index'])->name('candidates.index');
 Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidates.show');
 
+Route::get('pricing', PricingPageController::class)->name('pricing.index');
 
 /** Candidates Dashboard Routes */
 Route::group([

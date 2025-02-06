@@ -156,4 +156,11 @@ https://github.com/cviebrock/eloquent-sluggable
 - Showing Dynamic Data in Candidates Profile Page
 - Showing Dynamic Data in Companies Details page
 
+# Implementing Pricing System
+- Creating Neccessary Files and Designs
+- Working with Create Feature in the Backend
+- Showing Content at admin index
+- Working with update and Delete Feature
+- Showing Plans in Frontend Pricing Page
+
 
