@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class CandidateExperienceStoreRequest extends FormRequest
 {
-    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -15,6 +15,7 @@ class CandidateExperienceStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'job_title' => ['required', 'max:255'],
             'company' => ['required', 'max:255'],
             'department' => ['required', 'max:255'],
             'designation' => ['required', 'max:255'],

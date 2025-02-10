@@ -106,7 +106,8 @@
                     <li class="{{ setSidebarActive(['admin.organization-types.*']) }}"><a class="nav-link" href="{{ route('admin.organization-types.index') }}">Organization Type</a></li>
                     <li class="{{ setSidebarActive(['admin.languages.*']) }}"><a class="nav-link" href="{{ route('admin.languages.index') }}">Languages</a></li>
                     <li class="{{ setSidebarActive(['admin.professions.*']) }}"><a class="nav-link" href="{{ route('admin.professions.index') }}">Prefession</a></li>
-                    <li class="{{ setSidebarActive(['admin.skills.*']) }}"><a class="nav-link" href="{{ route('admin.skills.index') }}">Skill</a></li>
+                    <li class="{{ setSidebarActive(['admin.skills.*']) }}"><a class="nav-link" href="{{ route('admin.skills.index') }}">Technical Skill</a></li>
+                    <li class="{{ setSidebarActive(['admin.bvskills.*']) }}"><a class="nav-link" href="{{ route('admin.bvskills.index') }}">Behavioural Skill</a></li>
                 </ul>
             </li>
 
@@ -122,6 +123,11 @@
             </li>
 
             <li class="{{ setSidebarActive(['admin.plans.*']) }}"><a class="nav-link" href="{{ route('admin.plans.index') }}"><i class="fas fa-box"></i> <span>Price Plan</span></a></li>
+
+
+            <li class="{{ setSidebarActive(['admin.payment-settings.index']) }}"><a class="nav-link" href="{{ route('admin.payment-settings.index') }}"><i class="fas fa-box"></i> <span>Payment Settings</span></a></li>
+
+            <li class="{{ setSidebarActive(['admin.site-settings.index']) }}"><a class="nav-link" href="{{ route('admin.site-settings.index') }}"><i class="fas fa-box"></i> <span>Site Settings</span></a></li>
 
             {{--  <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i>

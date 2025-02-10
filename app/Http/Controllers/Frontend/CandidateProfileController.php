@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\CandidateAccountInfoUpdateRequest;
 use App\Http\Requests\Frontend\CandidateBasicProfileUpdateRequest;
 use App\Http\Requests\Frontend\CandidateProfileInfoUpdateRequest;
+use App\Models\BvSkill;
 use App\Models\Candidate;
+use App\Models\CandidateBvSkill;
 use App\Models\CandidateEducation;
 use App\Models\CandidateExperience;
 use App\Models\CandidateLanguage;
@@ -47,11 +49,12 @@ class CandidateProfileController extends Controller
         $professions = Profession::all();
         $candidate = Candidate::with(['skills'])->where('user_id', auth()->user()?->id)->first();
         $skills = Skill::all();
+        $bvskills = BvSkill::all();
         $languages = Language::all();
         $countries = Country::all();
         $states = State::where('country_id', $candidate?->country)->get();
         $cities = City::where('state_id', $candidate?->state)->get();
-        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experiences', 'professions', 'skills', 'languages', 'candidateExperiences', 'candidateEducation', 'countries', 'states', 'cities'));
+        return view('frontend.candidate-dashboard.profile.index', compact('candidate', 'experiences', 'professions', 'skills', 'bvskills', 'languages', 'candidateExperiences', 'candidateEducation', 'countries', 'states', 'cities'));
     }
 
     /** update basic info of candidate profile */
@@ -89,6 +92,7 @@ class CandidateProfileController extends Controller
         $data = [];
         $data['gender'] = $request->gender;
         $data['marital_status'] = $request->marital_status;
+        $data['children'] = $request->children;
         $data['profession_id'] = $request->profession;
         $data['status'] = $request->availability;
         $data['bio'] = $request->biography;
@@ -115,6 +119,14 @@ class CandidateProfileController extends Controller
             $candidateSkill->candidate_id = $candidate->id;
             $candidateSkill->skill_id = $skill;
             $candidateSkill->save();
+        }
+
+        CandidateBvSkill::where('candidate_id', $candidate->id)?->delete();
+        foreach($request->bv_skill_you_have as $bvskill) {
+            $candidateBvSkill = new CandidateBvSkill();
+            $candidateBvSkill->candidate_id = $candidate->id;
+            $candidateBvSkill->bv_skill_id = $bvskill;
+            $candidateBvSkill->save();
         }
 
         $this->updateProfileStatus();

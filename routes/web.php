@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
+use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\PricingPageController;
@@ -44,6 +46,7 @@ Route::get('candidates', [FrontendCandidatePageController::class, 'index'])->nam
 Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show'])->name('candidates.show');
 
 Route::get('pricing', PricingPageController::class)->name('pricing.index');
+Route::get('checkout/{plan_id}', CheckoutPageController::class)->name('checkout.index');
 
 /** Candidates Dashboard Routes */
 Route::group([
@@ -78,6 +81,16 @@ function(){
     Route::post('/profile/founding-info', [CompanyProfileController::class, 'updateFoundingInfo'])->name('profile.founding-info');
     Route::post('/profile/account-info', [CompanyProfileController::class, 'updateAccountInfo'])->name('profile.account-info');
     Route::post('/profile/password-update', [CompanyProfileController::class, 'updatePassword'])->name('profile.password-update');
+
+
+
+    /**Payment Routes */
+    Route::get('payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+    Route::get('payment/error', [PaymentController::class, 'paymentError'])->name('payment.error');
+    
+    Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
+    Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
+    Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
 });
 
 

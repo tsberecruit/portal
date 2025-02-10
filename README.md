@@ -163,4 +163,17 @@ https://github.com/cviebrock/eloquent-sluggable
 - Working with update and Delete Feature
 - Showing Plans in Frontend Pricing Page
 
+# Payment Gateway Implementation
+- Paypal Settings:  Creating necessary files and designs
+- Working with update form
+- Setting Data Globally
+- Creating Payment Geeral Settings
+- Setting Data Gobally
+- Paypal Interation: Creating Sandbox account
+- Working with Paypal integration
+- Storing Order Information
+- Storing User plan data
+- Working with redirect pages
+
+
 

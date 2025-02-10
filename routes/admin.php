@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\BvSkillController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryTypeController;
 use App\Http\Controllers\Admin\OrganizationTypeController;
@@ -17,8 +18,10 @@ use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\LocationController;
+use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PlanController;
 use App\Http\Controllers\Admin\ProfessionController;
+use App\Http\Controllers\Admin\SiteSettingController;
 use App\Http\Controllers\Admin\SkillController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,11 +73,23 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Profession Route  */
     Route::resource('professions', ProfessionController::class);
 
-    /** Skill Controller Route  */
+    /** Technical Skill Controller Route  */
     Route::resource('skills', SkillController::class);
+
+    /** Behavioural Skill Controller Route  */
+    Route::resource('bvskills', BvSkillController::class);
 
     /** Plan Controller Route  */
     Route::resource('plans', PlanController::class);
+
+    /** Payment Settings Route  */
+    Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
+    Route::post('paypal-settings', [PaymentSettingController::class, 'updatePaypalSetting'])->name('paypal-settings.update');
+
+    /** Site Settings Route  */
+    Route::get('site-settings', [SiteSettingController::class, 'index'])->name('site-settings.index');
+    Route::post('general-settings', [SiteSettingController::class, 'updateGeneralSetting'])->name('general-settings.update');
+    Route::post('logo-settings', [SiteSettingController::class, 'updateLogoSetting'])->name('logo-settings.update');
 
     /**Route::get('verify-email', EmailVerificationPromptController::class)
                 ->name('verification.notice');

@@ -34,6 +34,7 @@ class CandidateExperienceController extends Controller
     {
         $experience = new CandidateExperience();
         $experience->candidate_id = auth()->user()->candidateProfile->id;
+        $experience->job_title = $request->job_title;
         $experience->company = $request->company;
         $experience->department = $request->department;
         $experience->designation = $request->designation;
@@ -72,6 +73,7 @@ class CandidateExperienceController extends Controller
         if(auth()->user()->candidateProfile->id !== $experience->candidate_id){
             abort(404);
         }
+        $experience->job_title = $request->job_title;
         $experience->company = $request->company;
         $experience->department = $request->department;
         $experience->designation = $request->designation;

@@ -20,6 +20,7 @@ class CandidateProfileInfoUpdateRequest extends FormRequest
             'profession' => ['required', 'integer'],
             'availability' => ['required', 'in:available,not_available'],
             'skill_you_have' => ['required'],
+            'bv_skill_you_have' => ['required'],
             'language_you_know' => ['required'],
             'biography' => ['required']
         ];

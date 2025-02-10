@@ -16,6 +16,8 @@ class CandidateEducationStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'institution' => ['required', 'max:255'],
+            'course' => ['required', 'max:255'],
             'level' => ['required', 'max:255'],
             'degree' => ['required', 'max:255'],
             'year' => ['required', 'integer'],

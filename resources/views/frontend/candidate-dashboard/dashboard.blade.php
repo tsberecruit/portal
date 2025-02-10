@@ -51,7 +51,7 @@
                     <div class="col-12 mt-30">
                     <div class="dash_alert_box p-30 bg-danger rounded-4 d-flex flex-wrap">
                         <span class="img">
-                        <img src="{{ asset(auth()->user()->image) }}" alt="alert">
+                        <img src="{{ asset(auth()->user()?->image) }}" alt="alert">
                         </span>
                         <div class="text">
                         <h4>Please, setup your Profile First</h4>

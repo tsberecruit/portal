@@ -31,6 +31,15 @@
 
                     <div class="col-md-6">
                         <div class="form-group select-style">
+                            <label class="font-sm color-text-mutted mb-10">Specify No. of Chiledren if married</label>
+                            <input name="children" class="form-control {{ $errors->has('children') ? 'is-invalid' : '' }}"
+                                type="text" value="{{ $candidate?->children }}">
+                            <x-input-error :messages="$errors->get('children')" class="mt-2" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group select-style">
                             <label class="font-sm color-text-mutted mb-10">Profession *</label>
                             <select name="profession" id=""
                                 class="{{ $errors->has('profession') ? 'is-invalid' : '' }} form-icons select-active">
@@ -58,7 +67,7 @@
 
                     <div class="col-md-12">
                         <div class="form-group select-style">
-                            <label class="font-sm color-text-mutted mb-10">Skills you have *</label>
+                            <label class="font-sm color-text-mutted mb-10">Technical Skills you have *</label>
                             <select name="skill_you_have[]" id=""
                                 class="{{ $errors->has('skill_you_have') ? 'is-invalid' : '' }} form-icons select-active" multiple="">
                                 <option value="">Select one</option>
@@ -72,6 +81,24 @@
 
                             </select>
                             <x-input-error :messages="$errors->get('skill_you_have')" class="mt-2" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group select-style">
+                            <label class="font-sm color-text-mutted mb-10">Behavioural Skills you have *</label>
+                            <select name="bv_skill_you_have[]" id=""
+                                class="{{ $errors->has('bv_skill_you_have') ? 'is-invalid' : '' }} form-icons select-active" multiple="">
+                                <option value="">Select one</option>
+                                @foreach ($bvskills as $bvskill)
+                                    @php
+                                        $candidateBvSkills = $candidate?->bvskills?->pluck('bv_skill_id')->toArray() ?? [];
+                                    @endphp
+                                    <option @selected(in_array($bvskill->id, $candidateBvSkills)) value="{{ $bvskill->id }}">{{ $bvskill->name }}</option>
+                                @endforeach
+
+                            </select>
+                            <x-input-error :messages="$errors->get('bv_skill_you_have')" class="mt-2" />
                         </div>
                     </div>
 

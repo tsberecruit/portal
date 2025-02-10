@@ -80,7 +80,14 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="">Company *</label>
+                                        <label for="">Specify Job Titile *</label>
+                                        <input type="text" class="from-control" required="" name="job_title"
+                                            id="">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Company Name *</label>
                                         <input type="text" class="from-control" required="" name="company"
                                             id="">
                                     </div>
@@ -94,7 +101,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="">Designation *</label>
+                                        <label for="">Your Designation/Level *</label>
                                         <input type="text" class="from-control" required="" name="designation"
                                             id="">
                                     </div>
@@ -125,7 +132,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="">Responsibilities</label>
+                                        <label for="">Your Roles/Responsibilities</label>
                                         <textarea name="responsibilities" maxlength="500" id="" class="from-control"></textarea>
                                     </div>
                                 </div>
@@ -159,16 +166,30 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label for="">Institution of Study *</label>
+                                <input type="text" class="from-control" required="" name="institution" id="">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="">Course of Study *</label>
+                                <input type="text" class="from-control" required="" name="course" id="">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label for="">Level *</label>
                                 <input type="text" class="from-control" required="" name="level" id="">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="">Degree *</label>
+                                <label for="">Degree Type *</label>
                                 <input type="text" class="from-control" required="" name="degree" id="">
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="">Year *</label>
@@ -176,11 +197,16 @@
                             </div>
                         </div>
                         <div class="col-md-12">
+                            <label for="">Upload Cert. If Available <span class="text-primary">{{ $candidate?->cert ? 'Successfully attached.' : '' }}</span></label>
+                            <input name="cert" class="form-control" type="file" value="">
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="">Note</label>
                                 <textarea name="note" maxlength="500" id="" class="from-control" ></textarea>
                             </div>
                         </div>
+
                     </div>
                     <div class="text-right">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

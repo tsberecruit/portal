@@ -1,5 +1,7 @@
 @foreach ($candidateEducations as $education)
 <tr>
+    <td>{{ $education->institution }}</td>
+    <td>{{ $education->course }}</td>
     <td>{{ $education->level }}</td>
     <td>{{ $education->degree }}</td>
     <td>{{ $education->year }}</td>

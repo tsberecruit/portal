@@ -52,7 +52,7 @@ if(!function_exists('isCandidateProfileComplete')) {
     {
         $requiredFields = ['experience_id', 'profession_id', 'image', 'full_name', 'birth_date', 'gender', 'cv', 'bio', 'marital_status', 'country', 'status'];
 
-        $candidateProfile = Candidate::where('user_id', auth()->user()->id)->first();
+        $candidateProfile = Candidate::where('user_id', auth()->user()?->id)->first();
 
         foreach($requiredFields as $field) {
             if(empty($candidateProfile->{$field})) {

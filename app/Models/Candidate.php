@@ -12,8 +12,8 @@ class Candidate extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $fillable = ['user_id', 'cv', 'full_name', 'image',
-    'title', 'experience_id', 'website', 'birth_date', 'marital_status', 'profession_id', 'status', 'bio', 'country', 'state', 'city', 'address', 'phone_one', 'phone_two', 'email'
+    protected $fillable = ['user_id', 'cv', 'full_name', 'children', 'image',
+    'title', 'experience_id', 'gender', 'website', 'birth_date', 'marital_status', 'profession_id', 'status', 'bio', 'country', 'state', 'city', 'address', 'phone_one', 'phone_two', 'email'
     ];
 
     public function sluggable(): array
@@ -27,6 +27,9 @@ class Candidate extends Model
 
     function skills() : HasMany {
         return $this->hasMany(CandidateSkill::class, 'candidate_id', 'id');
+    }
+    function bvskills() : HasMany {
+        return $this->hasMany(CandidateBvSkill::class, 'candidate_id', 'id');
     }
 
     function languages() : HasMany {

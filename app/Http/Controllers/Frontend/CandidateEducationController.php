@@ -34,6 +34,8 @@ class CandidateEducationController extends Controller
     {
         $education = new CandidateEducation();
         $education->candidate_id = auth()->user()->candidateProfile->id;
+        $education->institution = $request->institution;
+        $education->course = $request->course;
         $education->level = $request->level;
         $education->degree = $request->degree;
         $education->year = $request->year;
@@ -71,6 +73,8 @@ class CandidateEducationController extends Controller
         if(auth()->user()->candidateProfile->id !== $education->candidate_id) {
             abort(404);
         }
+        $education->institution = $request->institution;
+        $education->course = $request->course;
         $education->level = $request->level;
         $education->degree = $request->degree;
         $education->year = $request->year;

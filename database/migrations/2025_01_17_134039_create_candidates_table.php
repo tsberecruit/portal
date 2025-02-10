@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->string('image')->nullable();
             $table->string('full_name')->nullable();
+            $table->string('children')->nullable();
             $table->string('slug')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->text('website')->nullable();

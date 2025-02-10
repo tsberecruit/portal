@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('candidate_education', function (Blueprint $table) {
             $table->id();
             $table->foreignId('candidate_id')->constrained('candidates')->onDelete('cascade');
+            $table->string('institution');
+            $table->string('course');
             $table->string('level');
             $table->string('degree');
             $table->string('year');

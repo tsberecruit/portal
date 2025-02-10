@@ -125,7 +125,7 @@
                 <div class="form-group">
                     <label class="font-sm color-text-mutted mb-10">Account Email</label>
                     <input class="form-control {{ $errors->has('account_email') ? 'is-invalid' : '' }}" type="text"
-                        value="{{ auth()->user()->email }}" name="account_email">
+                        value="{{ auth()->user()?->email }}" name="account_email">
                     <x-input-error :messages="$errors->get('account_email')" class="mt-2" />
                 </div>
             </div>
