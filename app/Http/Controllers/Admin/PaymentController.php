@@ -51,7 +51,7 @@ class PaymentController extends Controller
     //Paypal Payment
     function payWithPaypal()
     {
-        //abort_if(!$this->checkSession(), 404);
+        abort_if(!$this->checkSession(), 404);
 
         $config = $this->setPaypalConfig();
 
@@ -88,7 +88,7 @@ class PaymentController extends Controller
 
     function paypalSuccess(Request $request)
     {
-        //abort_if(!$this->checkSession(), 404);
+        abort_if(!$this->checkSession(), 404);
 
         $config = $this->setPaypalConfig();
 
@@ -97,7 +97,7 @@ class PaymentController extends Controller
 
         $response = $provider->capturePaymentOrder($request->token);
 
-        if(isset($response['status']) && $response['status'] === 'COMPLETED') {
+        if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             $capture = $response['purchase_units'][0]['payments']['captures'][0];
 
             try {
@@ -113,8 +113,9 @@ class PaymentController extends Controller
             }
         }
 
-        dd($response);
-        //return redirect()->route('company.payment.error')->withErrors(['error' => $response['error']['message']]);
+        //dd($response);
+        return redirect()->route('company.payment.error');
+        //->withErrors(['error' => $response['error']['message']]);
 
     }
 
@@ -122,4 +123,117 @@ class PaymentController extends Controller
     {
         return redirect()->route('company.payment.error')->withErrors(['error' => 'Something went wrong please try again']);
     }
+
+    // Pay with Stripe
+    function payWithStripe() {
+        abort_if(!$this->checkSession(), 404);
+
+        Stripe::setApiKey(config('gatewaySettings.stripe_secret_key'));
+
+        /** calculate payable amount */
+
+        $payableAmount = round(Session::get('selected_plan')['price'] * config('gatewaySettings.stripe_currency_rate')) * 100;
+
+        $response = StripeSession::create([
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => config('gatewaySettings.stripe_currency_name'),
+                        'product_data' => [
+                            'name' => Session::get('selected_plan')['label'] . ' Package',
+                        ],
+                        'unit_amount' => $payableAmount
+                    ],
+                    'quantity' => 1
+                ]
+            ],
+            'mode' => 'payment',
+            'success_url' => route('company.stripe.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('company.stripe.cancel')
+        ]);
+
+        return redirect()->away($response->url);
+
+
+    }
+
+    function stripeSuccess(Request $request) {
+        abort_if(!$this->checkSession(), 404);
+
+        Stripe::setApiKey(config('gatewaySettings.stripe_secret_key'));
+        $sessionId = $request->session_id;
+
+        $response = StripeSession::retrieve($sessionId);
+        if($response->payment_status === 'paid') {
+            try {
+                OrderService::storeOrder($response->payment_intent, 'stripe', ($response->amount_total / 100), $response->currency, 'paid');
+
+                OrderService::setUserPlan();
+
+                Session::forget('selected_plan');
+                return redirect()->route('company.payment.success');
+            }catch(\Exception $e) {
+                logger( 'Payment ERROR >> '. $e);
+            }
+        }else {
+            redirect()->route('company.payment.error')->withErrors(['error' => 'Payment failed']);
+        }
+    }
+
+    function stripeCancel() {
+        redirect()->route('company.payment.error')->withErrors(['error' => 'Payment failed']);
+    }
+
+
+
+    function razorpayRedirect() : View {
+        abort_if(!$this->checkSession(), 404);
+
+        return view('frontend.pages.razorpay-redirect');
+    }
+
+
+
+    function payWithRazorpay(Request $request) {
+        abort_if(!$this->checkSession(), 404);
+
+        $api = new RazorpayApi(
+            config('gatewaySettings.razorpay_key'),
+            config('gatewaySettings.razorpay_secret_key')
+        );
+
+        if(isset($request->razorpay_payment_id) && $request->filled('razorpay_payment_id')) {
+            $payableAmount = (session('selected_plan')['price'] * config('gatewaySettings.razorpay_currency_rate')) * 100;
+
+            try {
+                $response = $api->payment
+                    ->fetch($request->razorpay_payment_id)
+                    ->capture(['amount' => $payableAmount]);
+
+                if($response['status'] === 'captured') {
+                    OrderService::storeOrder($response->id, 'razorpay', ($response->amount / 100), $response->currency, 'paid');
+
+                    OrderService::setUserPlan();
+
+                    Session::forget('selected_plan');
+                    return redirect()->route('company.payment.success');
+                }else {
+                    redirect()->route('company.payment.error')->withErrors(['error' => 'Something went wrong please try again.']);
+                }
+            }catch(\Exception $e) {
+                logger($e);
+                redirect()->route('company.payment.error')->withErrors(['error' => $e->getMessage()]);
+            }
+        }
+    }
+
+
+    /** check session for selected plan */
+    function checkSession() : bool {
+        if(session()->has('selected_plan')) {
+            return true;
+        }
+        return false;
+    }
+
 }

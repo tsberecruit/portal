@@ -174,6 +174,8 @@ https://github.com/cviebrock/eloquent-sluggable
 - Storing Order Information
 - Storing User plan data
 - Working with redirect pages
-
+- Stripe Payment Implementation
+- Razorpay Payment Implementation
+- 
 
 
