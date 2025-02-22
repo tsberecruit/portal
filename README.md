@@ -178,4 +178,24 @@ https://github.com/cviebrock/eloquent-sluggable
 - Razorpay Payment Implementation
 - 
 
+# Order and Invoices
+- Showing Orders in Admin Panel
+- Working with Payment Invoce
+- Showing Orders in User Panel
 
+# Job Attributes
+- Working with Job Category Module
+- Working with Education Module
+- Working with Job Type Module - Salary Type
+- Working with Job Type Module - Tags
+- Working with Job Type Module - Job Roles
+- Working with Job Experiences Module
+- Adding Seeder data for job Attributes
+
+# Job Posting Features
+- Working with Databse migration for Job posting
+- Woring with From Creation for job posting
+- Working with Form Validation for Job Posting
+- Storing/submitted data from the Job Posting Form to the DB 
+- Showing submitted data on the index page
+- Working with the edit, Update and delete feature for the Job Posting 

@@ -14,6 +14,7 @@ use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\PricingPageController;
+use App\Http\Controllers\Frontend\CandidateTrackingController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -64,6 +65,9 @@ Route::group([
     Route::post('/profile/account-info-update', [CandidateProfileController::class, 'AccountInfoUpdate'])->name('profile.account-info.update');
     Route::post('/profile/account-email-update', [CandidateProfileController::class, 'AccountEmailUpdate'])->name('profile.account-email.update');
     Route::post('/profile/account-password-update', [CandidateProfileController::class, 'AccountPasswordUpdate'])->name('profile.account-password.update');
+
+    //Candidate tracking Route
+    Route::get('/profile/track-candidate-application', [CandidateTrackingController::class, 'trackCandidateApplication'])->name('profile.track-candidate-application');
 });
 
 /** Company Dashboard Routes */
@@ -82,6 +86,8 @@ function(){
     Route::post('/profile/account-info', [CompanyProfileController::class, 'updateAccountInfo'])->name('profile.account-info');
     Route::post('/profile/password-update', [CompanyProfileController::class, 'updatePassword'])->name('profile.password-update');
 
+
+    /**  Order Routes */
 
 
     /**Payment Routes */

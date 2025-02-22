@@ -5,7 +5,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.48.25.
+ * Generated for Laravel 10.48.28.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -17203,6 +17203,1463 @@ namespace Illuminate\Support\Facades {
             }
     }
 
+namespace Barryvdh\Debugbar\Facades {
+            /**
+     * 
+     *
+     * @method static void alert(mixed $message)
+     * @method static void critical(mixed $message)
+     * @method static void debug(mixed $message)
+     * @method static void emergency(mixed $message)
+     * @method static void error(mixed $message)
+     * @method static void info(mixed $message)
+     * @method static void log(mixed $message)
+     * @method static void notice(mixed $message)
+     * @method static void warning(mixed $message)
+     * @see \Barryvdh\Debugbar\LaravelDebugbar
+     */        class Debugbar {
+                    /**
+         * Returns the HTTP driver
+         * 
+         * If no http driver where defined, a PhpHttpDriver is automatically created
+         *
+         * @return \DebugBar\HttpDriverInterface 
+         * @static 
+         */        public static function getHttpDriver()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getHttpDriver();
+        }
+                    /**
+         * Enable the Debugbar and boot, if not already booted.
+         *
+         * @static 
+         */        public static function enable()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->enable();
+        }
+                    /**
+         * Boot the debugbar (add collectors, renderer and listener)
+         *
+         * @static 
+         */        public static function boot()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->boot();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function shouldCollect($name, $default = false)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->shouldCollect($name, $default);
+        }
+                    /**
+         * Adds a data collector
+         *
+         * @param \DebugBar\DataCollector\DataCollectorInterface $collector
+         * @throws DebugBarException
+         * @return \Barryvdh\Debugbar\LaravelDebugbar 
+         * @static 
+         */        public static function addCollector($collector)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->addCollector($collector);
+        }
+                    /**
+         * Handle silenced errors
+         *
+         * @param $level
+         * @param $message
+         * @param string $file
+         * @param int $line
+         * @param array $context
+         * @throws \ErrorException
+         * @static 
+         */        public static function handleError($level, $message, $file = '', $line = 0, $context = [])
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->handleError($level, $message, $file, $line, $context);
+        }
+                    /**
+         * Starts a measure
+         *
+         * @param string $name Internal name, used to stop the measure
+         * @param string $label Public name
+         * @param string|null $collector
+         * @static 
+         */        public static function startMeasure($name, $label = null, $collector = null)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->startMeasure($name, $label, $collector);
+        }
+                    /**
+         * Stops a measure
+         *
+         * @param string $name
+         * @static 
+         */        public static function stopMeasure($name)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->stopMeasure($name);
+        }
+                    /**
+         * Adds an exception to be profiled in the debug bar
+         *
+         * @param \Exception $e
+         * @deprecated in favor of addThrowable
+         * @static 
+         */        public static function addException($e)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->addException($e);
+        }
+                    /**
+         * Adds an exception to be profiled in the debug bar
+         *
+         * @param \Throwable $e
+         * @static 
+         */        public static function addThrowable($e)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->addThrowable($e);
+        }
+                    /**
+         * Returns a JavascriptRenderer for this instance
+         *
+         * @param string $baseUrl
+         * @param string $basePath
+         * @return \Barryvdh\Debugbar\JavascriptRenderer 
+         * @static 
+         */        public static function getJavascriptRenderer($baseUrl = null, $basePath = null)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getJavascriptRenderer($baseUrl, $basePath);
+        }
+                    /**
+         * Modify the response and inject the debugbar (or data in headers)
+         *
+         * @param \Symfony\Component\HttpFoundation\Request $request
+         * @param \Symfony\Component\HttpFoundation\Response $response
+         * @return \Symfony\Component\HttpFoundation\Response 
+         * @static 
+         */        public static function modifyResponse($request, $response)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->modifyResponse($request, $response);
+        }
+                    /**
+         * Check if the Debugbar is enabled
+         *
+         * @return boolean 
+         * @static 
+         */        public static function isEnabled()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->isEnabled();
+        }
+                    /**
+         * Collects the data from the collectors
+         *
+         * @return array 
+         * @static 
+         */        public static function collect()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->collect();
+        }
+                    /**
+         * Injects the web debug toolbar into the given Response.
+         *
+         * @param \Symfony\Component\HttpFoundation\Response $response A Response instance
+         * Based on https://github.com/symfony/WebProfilerBundle/blob/master/EventListener/WebDebugToolbarListener.php
+         * @static 
+         */        public static function injectDebugbar($response)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->injectDebugbar($response);
+        }
+                    /**
+         * Checks if there is stacked data in the session
+         *
+         * @return boolean 
+         * @static 
+         */        public static function hasStackedData()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->hasStackedData();
+        }
+                    /**
+         * Returns the data stacked in the session
+         *
+         * @param boolean $delete Whether to delete the data in the session
+         * @return array 
+         * @static 
+         */        public static function getStackedData($delete = true)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getStackedData($delete);
+        }
+                    /**
+         * Disable the Debugbar
+         *
+         * @static 
+         */        public static function disable()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->disable();
+        }
+                    /**
+         * Adds a measure
+         *
+         * @param string $label
+         * @param float $start
+         * @param float $end
+         * @param array|null $params
+         * @param string|null $collector
+         * @static 
+         */        public static function addMeasure($label, $start, $end, $params = [], $collector = null)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->addMeasure($label, $start, $end, $params, $collector);
+        }
+                    /**
+         * Utility function to measure the execution of a Closure
+         *
+         * @param string $label
+         * @param \Closure $closure
+         * @param string|null $collector
+         * @return mixed 
+         * @static 
+         */        public static function measure($label, $closure, $collector = null)
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->measure($label, $closure, $collector);
+        }
+                    /**
+         * Collect data in a CLI request
+         *
+         * @return array 
+         * @static 
+         */        public static function collectConsole()
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->collectConsole();
+        }
+                    /**
+         * Adds a message to the MessagesCollector
+         * 
+         * A message can be anything from an object to a string
+         *
+         * @param mixed $message
+         * @param string $label
+         * @static 
+         */        public static function addMessage($message, $label = 'info')
+        {
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->addMessage($message, $label);
+        }
+                    /**
+         * Checks if a data collector has been added
+         *
+         * @param string $name
+         * @return boolean 
+         * @static 
+         */        public static function hasCollector($name)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->hasCollector($name);
+        }
+                    /**
+         * Returns a data collector
+         *
+         * @param string $name
+         * @return \DebugBar\DataCollector\DataCollectorInterface 
+         * @throws DebugBarException
+         * @static 
+         */        public static function getCollector($name)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getCollector($name);
+        }
+                    /**
+         * Returns an array of all data collectors
+         *
+         * @return array[DataCollectorInterface] 
+         * @static 
+         */        public static function getCollectors()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getCollectors();
+        }
+                    /**
+         * Sets the request id generator
+         *
+         * @param \DebugBar\RequestIdGeneratorInterface $generator
+         * @return \Barryvdh\Debugbar\LaravelDebugbar 
+         * @static 
+         */        public static function setRequestIdGenerator($generator)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->setRequestIdGenerator($generator);
+        }
+                    /**
+         * 
+         *
+         * @return \DebugBar\RequestIdGeneratorInterface 
+         * @static 
+         */        public static function getRequestIdGenerator()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getRequestIdGenerator();
+        }
+                    /**
+         * Returns the id of the current request
+         *
+         * @return string 
+         * @static 
+         */        public static function getCurrentRequestId()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getCurrentRequestId();
+        }
+                    /**
+         * Sets the storage backend to use to store the collected data
+         *
+         * @param \DebugBar\StorageInterface $storage
+         * @return \Barryvdh\Debugbar\LaravelDebugbar 
+         * @static 
+         */        public static function setStorage($storage = null)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->setStorage($storage);
+        }
+                    /**
+         * 
+         *
+         * @return \DebugBar\StorageInterface 
+         * @static 
+         */        public static function getStorage()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getStorage();
+        }
+                    /**
+         * Checks if the data will be persisted
+         *
+         * @return boolean 
+         * @static 
+         */        public static function isDataPersisted()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->isDataPersisted();
+        }
+                    /**
+         * Sets the HTTP driver
+         *
+         * @param \DebugBar\HttpDriverInterface $driver
+         * @return \Barryvdh\Debugbar\LaravelDebugbar 
+         * @static 
+         */        public static function setHttpDriver($driver)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->setHttpDriver($driver);
+        }
+                    /**
+         * Returns collected data
+         * 
+         * Will collect the data if none have been collected yet
+         *
+         * @return array 
+         * @static 
+         */        public static function getData()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getData();
+        }
+                    /**
+         * Returns an array of HTTP headers containing the data
+         *
+         * @param string $headerName
+         * @param integer $maxHeaderLength
+         * @return array 
+         * @static 
+         */        public static function getDataAsHeaders($headerName = 'phpdebugbar', $maxHeaderLength = 4096, $maxTotalHeaderLength = 250000)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getDataAsHeaders($headerName, $maxHeaderLength, $maxTotalHeaderLength);
+        }
+                    /**
+         * Sends the data through the HTTP headers
+         *
+         * @param bool $useOpenHandler
+         * @param string $headerName
+         * @param integer $maxHeaderLength
+         * @return \Barryvdh\Debugbar\LaravelDebugbar 
+         * @static 
+         */        public static function sendDataInHeaders($useOpenHandler = null, $headerName = 'phpdebugbar', $maxHeaderLength = 4096)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->sendDataInHeaders($useOpenHandler, $headerName, $maxHeaderLength);
+        }
+                    /**
+         * Stacks the data in the session for later rendering
+         *
+         * @static 
+         */        public static function stackData()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->stackData();
+        }
+                    /**
+         * Sets the key to use in the $_SESSION array
+         *
+         * @param string $ns
+         * @return \Barryvdh\Debugbar\LaravelDebugbar 
+         * @static 
+         */        public static function setStackDataSessionNamespace($ns)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->setStackDataSessionNamespace($ns);
+        }
+                    /**
+         * Returns the key used in the $_SESSION array
+         *
+         * @return string 
+         * @static 
+         */        public static function getStackDataSessionNamespace()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->getStackDataSessionNamespace();
+        }
+                    /**
+         * Sets whether to only use the session to store stacked data even
+         * if a storage is enabled
+         *
+         * @param boolean $enabled
+         * @return \Barryvdh\Debugbar\LaravelDebugbar 
+         * @static 
+         */        public static function setStackAlwaysUseSessionStorage($enabled = true)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->setStackAlwaysUseSessionStorage($enabled);
+        }
+                    /**
+         * Checks if the session is always used to store stacked data
+         * even if a storage is enabled
+         *
+         * @return boolean 
+         * @static 
+         */        public static function isStackAlwaysUseSessionStorage()
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->isStackAlwaysUseSessionStorage();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function offsetSet($key, $value)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->offsetSet($key, $value);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function offsetGet($key)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->offsetGet($key);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function offsetExists($key)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->offsetExists($key);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function offsetUnset($key)
+        {            //Method inherited from \DebugBar\DebugBar         
+                        /** @var \Barryvdh\Debugbar\LaravelDebugbar $instance */
+                        return $instance->offsetUnset($key);
+        }
+            }
+    }
+
+namespace Barryvdh\DomPDF\Facade {
+            /**
+     * 
+     *
+     * @method static BasePDF setBaseHost(string $baseHost)
+     * @method static BasePDF setBasePath(string $basePath)
+     * @method static BasePDF setCanvas(\Dompdf\Canvas $canvas)
+     * @method static BasePDF setCallbacks(array $callbacks)
+     * @method static BasePDF setCss(\Dompdf\Css\Stylesheet $css)
+     * @method static BasePDF setDefaultView(string $defaultView, array $options)
+     * @method static BasePDF setDom(\DOMDocument $dom)
+     * @method static BasePDF setFontMetrics(\Dompdf\FontMetrics $fontMetrics)
+     * @method static BasePDF setHttpContext(resource|array $httpContext)
+     * @method static BasePDF setPaper(string|float[] $paper, string $orientation = 'portrait')
+     * @method static BasePDF setProtocol(string $protocol)
+     * @method static BasePDF setTree(\Dompdf\Frame\FrameTree $tree)
+     */        class Pdf {
+                    /**
+         * Get the DomPDF instance
+         *
+         * @static 
+         */        public static function getDomPDF()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->getDomPDF();
+        }
+                    /**
+         * Show or hide warnings
+         *
+         * @static 
+         */        public static function setWarnings($warnings)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setWarnings($warnings);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param string|null $encoding Not used yet
+         * @static 
+         */        public static function loadHTML($string, $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadHTML($string, $encoding);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @static 
+         */        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadFile($file);
+        }
+                    /**
+         * Add metadata info
+         *
+         * @param array<string, string> $info
+         * @static 
+         */        public static function addInfo($info)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->addInfo($info);
+        }
+                    /**
+         * Load a View and convert to HTML
+         *
+         * @param array<string, mixed> $data
+         * @param array<string, mixed> $mergeData
+         * @param string|null $encoding Not used yet
+         * @static 
+         */        public static function loadView($view, $data = [], $mergeData = [], $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadView($view, $data, $mergeData, $encoding);
+        }
+                    /**
+         * Set/Change an option (or array of options) in Dompdf
+         *
+         * @param array<string, mixed>|string $attribute
+         * @param null|mixed $value
+         * @static 
+         */        public static function setOption($attribute, $value = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOption($attribute, $value);
+        }
+                    /**
+         * Replace all the Options from DomPDF
+         *
+         * @param array<string, mixed> $options
+         * @static 
+         */        public static function setOptions($options, $mergeWithDefaults = false)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOptions($options, $mergeWithDefaults);
+        }
+                    /**
+         * Output the PDF as a string.
+         * 
+         * The options parameter controls the output. Accepted options are:
+         * 
+         * 'compress' = > 1 or 0 - apply content stream compression, this is
+         *    on (1) by default
+         *
+         * @param array<string, int> $options
+         * @return string The rendered PDF as string
+         * @static 
+         */        public static function output($options = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->output($options);
+        }
+                    /**
+         * Save the PDF to a file
+         *
+         * @static 
+         */        public static function save($filename, $disk = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->save($filename, $disk);
+        }
+                    /**
+         * Make the PDF downloadable by the user
+         *
+         * @static 
+         */        public static function download($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->download($filename);
+        }
+                    /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @static 
+         */        public static function stream($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->stream($filename);
+        }
+                    /**
+         * Render the PDF
+         *
+         * @static 
+         */        public static function render()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @param array<string> $pc
+         * @static 
+         */        public static function setEncryption($password, $ownerpassword = '', $pc = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setEncryption($password, $ownerpassword, $pc);
+        }
+            }
+            /**
+     * 
+     *
+     * @method static BasePDF setBaseHost(string $baseHost)
+     * @method static BasePDF setBasePath(string $basePath)
+     * @method static BasePDF setCanvas(\Dompdf\Canvas $canvas)
+     * @method static BasePDF setCallbacks(array $callbacks)
+     * @method static BasePDF setCss(\Dompdf\Css\Stylesheet $css)
+     * @method static BasePDF setDefaultView(string $defaultView, array $options)
+     * @method static BasePDF setDom(\DOMDocument $dom)
+     * @method static BasePDF setFontMetrics(\Dompdf\FontMetrics $fontMetrics)
+     * @method static BasePDF setHttpContext(resource|array $httpContext)
+     * @method static BasePDF setPaper(string|float[] $paper, string $orientation = 'portrait')
+     * @method static BasePDF setProtocol(string $protocol)
+     * @method static BasePDF setTree(\Dompdf\Frame\FrameTree $tree)
+     */        class Pdf {
+                    /**
+         * Get the DomPDF instance
+         *
+         * @static 
+         */        public static function getDomPDF()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->getDomPDF();
+        }
+                    /**
+         * Show or hide warnings
+         *
+         * @static 
+         */        public static function setWarnings($warnings)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setWarnings($warnings);
+        }
+                    /**
+         * Load a HTML string
+         *
+         * @param string|null $encoding Not used yet
+         * @static 
+         */        public static function loadHTML($string, $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadHTML($string, $encoding);
+        }
+                    /**
+         * Load a HTML file
+         *
+         * @static 
+         */        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadFile($file);
+        }
+                    /**
+         * Add metadata info
+         *
+         * @param array<string, string> $info
+         * @static 
+         */        public static function addInfo($info)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->addInfo($info);
+        }
+                    /**
+         * Load a View and convert to HTML
+         *
+         * @param array<string, mixed> $data
+         * @param array<string, mixed> $mergeData
+         * @param string|null $encoding Not used yet
+         * @static 
+         */        public static function loadView($view, $data = [], $mergeData = [], $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadView($view, $data, $mergeData, $encoding);
+        }
+                    /**
+         * Set/Change an option (or array of options) in Dompdf
+         *
+         * @param array<string, mixed>|string $attribute
+         * @param null|mixed $value
+         * @static 
+         */        public static function setOption($attribute, $value = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOption($attribute, $value);
+        }
+                    /**
+         * Replace all the Options from DomPDF
+         *
+         * @param array<string, mixed> $options
+         * @static 
+         */        public static function setOptions($options, $mergeWithDefaults = false)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOptions($options, $mergeWithDefaults);
+        }
+                    /**
+         * Output the PDF as a string.
+         * 
+         * The options parameter controls the output. Accepted options are:
+         * 
+         * 'compress' = > 1 or 0 - apply content stream compression, this is
+         *    on (1) by default
+         *
+         * @param array<string, int> $options
+         * @return string The rendered PDF as string
+         * @static 
+         */        public static function output($options = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->output($options);
+        }
+                    /**
+         * Save the PDF to a file
+         *
+         * @static 
+         */        public static function save($filename, $disk = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->save($filename, $disk);
+        }
+                    /**
+         * Make the PDF downloadable by the user
+         *
+         * @static 
+         */        public static function download($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->download($filename);
+        }
+                    /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @static 
+         */        public static function stream($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->stream($filename);
+        }
+                    /**
+         * Render the PDF
+         *
+         * @static 
+         */        public static function render()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @param array<string> $pc
+         * @static 
+         */        public static function setEncryption($password, $ownerpassword = '', $pc = [])
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setEncryption($password, $ownerpassword, $pc);
+        }
+            }
+    }
+
+namespace LaravelDaily\Invoices\Facades {
+            /**
+     * Class Invoice
+     *
+     */        class Invoice {
+                    /**
+         * 
+         *
+         * @param string $name
+         * @throws \Illuminate\Contracts\Container\BindingResolutionException
+         * @return \Invoice 
+         * @static 
+         */        public static function make($name = '')
+        {
+                        return \LaravelDaily\Invoices\Invoice::make($name);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Classes\Party 
+         * @static 
+         */        public static function makeParty($attributes = [])
+        {
+                        return \LaravelDaily\Invoices\Invoice::makeParty($attributes);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Classes\InvoiceItem 
+         * @static 
+         */        public static function makeItem($title = '')
+        {
+                        return \LaravelDaily\Invoices\Invoice::makeItem($title);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function addItem($item)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->addItem($item);
+        }
+                    /**
+         * 
+         *
+         * @param $items
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function addItems($items)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->addItems($items);
+        }
+                    /**
+         * 
+         *
+         * @throws Exception
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function render()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->render();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function toHtml()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->toHtml();
+        }
+                    /**
+         * 
+         *
+         * @throws Exception
+         * @return \Response 
+         * @static 
+         */        public static function stream()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->stream();
+        }
+                    /**
+         * 
+         *
+         * @throws Exception
+         * @return \Response 
+         * @static 
+         */        public static function download()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->download();
+        }
+                    /**
+         * 
+         *
+         * @param string $code
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function currencyCode($code)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->currencyCode($code);
+        }
+                    /**
+         * 
+         *
+         * @param string $name
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function currencyFraction($name)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->currencyFraction($name);
+        }
+                    /**
+         * 
+         *
+         * @param string $symbol
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function currencySymbol($symbol)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->currencySymbol($symbol);
+        }
+                    /**
+         * 
+         *
+         * @param int $decimals
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function currencyDecimals($decimals)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->currencyDecimals($decimals);
+        }
+                    /**
+         * 
+         *
+         * @param string $decimal_point
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function currencyDecimalPoint($decimal_point)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->currencyDecimalPoint($decimal_point);
+        }
+                    /**
+         * 
+         *
+         * @param string $thousands_separator
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function currencyThousandsSeparator($thousands_separator)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->currencyThousandsSeparator($thousands_separator);
+        }
+                    /**
+         * 
+         *
+         * @param string $format
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function currencyFormat($format)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->currencyFormat($format);
+        }
+                    /**
+         * 
+         *
+         * @param float $amount
+         * @return string 
+         * @static 
+         */        public static function formatCurrency($amount)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->formatCurrency($amount);
+        }
+                    /**
+         * 
+         *
+         * @param float $amount
+         * @param string|null $locale
+         * @return string 
+         * @static 
+         */        public static function getAmountInWords($amount, $locale = null)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->getAmountInWords($amount, $locale);
+        }
+                    /**
+         * 
+         *
+         * @param \LaravelDaily\Invoices\CarbonInterface $date
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function date($date)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->date($date);
+        }
+                    /**
+         * 
+         *
+         * @param string $format
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function dateFormat($format)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->dateFormat($format);
+        }
+                    /**
+         * 
+         *
+         * @param int $days
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function payUntilDays($days)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->payUntilDays($days);
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */        public static function getDate()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->getDate();
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */        public static function getPayUntilDate()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->getPayUntilDate();
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function name($name)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->name($name);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function status($status)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->status($status);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function notes($notes)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->notes($notes);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function logo($logo)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->logo($logo);
+        }
+                    /**
+         * 
+         *
+         * @throws Exception
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function totalTaxes($amount, $byPercent = false)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->totalTaxes($amount, $byPercent);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function shipping($amount)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->shipping($amount);
+        }
+                    /**
+         * 
+         *
+         * @throws Exception
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function taxRate($amount)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->taxRate($amount);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function taxableAmount($taxable_amount)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->taxableAmount($taxable_amount);
+        }
+                    /**
+         * 
+         *
+         * @throws Exception
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function totalDiscount($total_discount, $byPercent = false)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->totalDiscount($total_discount, $byPercent);
+        }
+                    /**
+         * 
+         *
+         * @throws Exception
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function discountByPercent($discount)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->discountByPercent($discount);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function totalAmount($total_amount)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->totalAmount($total_amount);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function seller($seller)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->seller($seller);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function buyer($buyer)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->buyer($buyer);
+        }
+                    /**
+         * 
+         *
+         * @param mixed
+         * @param mixed $value
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function setCustomData($value)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->setCustomData($value);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getCustomData()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->getCustomData();
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function template($template = 'default')
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->template($template);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function filename($filename)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->filename($filename);
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */        public static function getTotalAmountInWords()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->getTotalAmountInWords();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function getLogo()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->getLogo();
+        }
+                    /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */        public static function hasTax()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->hasTax();
+        }
+                    /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */        public static function hasDiscount()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->hasDiscount();
+        }
+                    /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */        public static function hasShipping()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->hasShipping();
+        }
+                    /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */        public static function hasTotalAmount()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->hasTotalAmount();
+        }
+                    /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */        public static function hasItemOrInvoiceTax()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->hasItemOrInvoiceTax();
+        }
+                    /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */        public static function hasItemOrInvoiceDiscount()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->hasItemOrInvoiceDiscount();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function applyColspan()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->applyColspan();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function calculateDiscount()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->calculateDiscount();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function calculateTax()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->calculateTax();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function calculateShipping()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->calculateShipping();
+        }
+                    /**
+         * 
+         *
+         * @throws Exception
+         * @static 
+         */        public static function validate()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->validate();
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function calculate()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->calculate();
+        }
+                    /**
+         * 
+         *
+         * @param string $disk
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function save($disk = '')
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->save($disk);
+        }
+                    /**
+         * 
+         *
+         * @return mixed 
+         * @static 
+         */        public static function url()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->url();
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function series($series)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->series($series);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function sequence($sequence)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->sequence($sequence);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function delimiter($delimiter)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->delimiter($delimiter);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function sequencePadding($value)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->sequencePadding($value);
+        }
+                    /**
+         * 
+         *
+         * @return \LaravelDaily\Invoices\Invoice 
+         * @static 
+         */        public static function serialNumberFormat($format)
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->serialNumberFormat($format);
+        }
+                    /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */        public static function getSerialNumber()
+        {
+                        /** @var \LaravelDaily\Invoices\Invoice $instance */
+                        return $instance->getSerialNumber();
+        }
+            }
+    }
+
 namespace Flasher\Laravel\Facade {
             /**
      * 
@@ -17721,6 +19178,55 @@ namespace Spatie\LaravelIgnition\Facades {
         {
                         /** @var \Spatie\FlareClient\Flare $instance */
                         return $instance->group($groupName, $properties);
+        }
+            }
+    }
+
+namespace Srmklive\PayPal\Facades {
+            /**
+     * 
+     *
+     */        class PayPal {
+                    /**
+         * Get specific PayPal API provider object to use.
+         *
+         * @throws Exception
+         * @return \Srmklive\PayPal\Services\PayPal 
+         * @static 
+         */        public static function getProvider()
+        {
+                        return \Srmklive\PayPal\PayPalFacadeAccessor::getProvider();
+        }
+                    /**
+         * Set PayPal API Client to use.
+         *
+         * @throws \Exception
+         * @return \Srmklive\PayPal\Services\PayPal 
+         * @static 
+         */        public static function setProvider()
+        {
+                        return \Srmklive\PayPal\PayPalFacadeAccessor::setProvider();
+        }
+            }
+    }
+
+namespace Illuminate\Support {
+            /**
+     * 
+     *
+     * @template TKey of array-key
+     * @template-covariant TValue
+     * @implements \ArrayAccess<TKey, TValue>
+     * @implements \Illuminate\Support\Enumerable<TKey, TValue>
+     */        class Collection {
+                    /**
+         * 
+         *
+         * @see \Barryvdh\Debugbar\ServiceProvider::register()
+         * @static 
+         */        public static function debug()
+        {
+                        return \Illuminate\Support\Collection::debug();
         }
             }
     }
@@ -21283,9 +22789,14 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class Debugbar extends \Barryvdh\Debugbar\Facades\Debugbar {}
+            class PDF extends \Barryvdh\DomPDF\Facade\Pdf {}
+            class Pdf extends \Barryvdh\DomPDF\Facade\Pdf {}
+            class Invoice extends \LaravelDaily\Invoices\Facades\Invoice {}
             class Flasher extends \Flasher\Laravel\Facade\Flasher {}
             class Notyf extends \Flasher\Notyf\Laravel\Facade\Notyf {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
+            class PayPal extends \Srmklive\PayPal\Facades\PayPal {}
     }
 
 
