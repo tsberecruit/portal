@@ -119,7 +119,7 @@
 @endsection
 
 @push('scripts')
-    {{--<script>
+    <script>
         $(document).ready(function() {
             $('.post_status').on('change', function(){
                 let id = $(this).data('id');
@@ -139,5 +139,5 @@
                 });
             })
         })
-    </script>--}}
+    </script>
 @endpush

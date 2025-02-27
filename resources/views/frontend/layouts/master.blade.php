@@ -19,6 +19,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/css/bootstrap-datepicker3.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 
+  <link rel="stylesheet" href="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+
+
   <title>TSB-Erecruit - Job Portal </title>
 </head>
 
@@ -84,10 +87,15 @@
   <script src="{{ asset('frontend/assets/js/plugins/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('frontend/assets/js/plugins/Font-Awesome.js') }}"></script>
   <script src="{{ asset('frontend/assets/js/pluggins/counterup.js') }}"></script>
+  <script src="{{ asset('admin/assets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+  <script src="{{ asset('frontend/assets/js/noUISlider.js') }}"></script>
+  <script src="{{ asset('frontend/assets/js/slider.js') }}"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker@1.10.0/dist/js/bootstrap-datepicker.min.js"></script>
   <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
   <script src="https:/cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/goodshare.js@6/goodshare.min.js"></script>
 
   <script src="{{ asset('frontend/assets/js/main.js?v=4.1') }}"></script>
 

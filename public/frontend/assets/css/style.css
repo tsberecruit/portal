@@ -5197,7 +5197,7 @@ ul li:last-child .card-list-4 {
 }
 
 /***************************
-    Page section margin 
+    Page section margin
 ****************************/
 .mtb-0 {
   margin: 0;
@@ -9688,7 +9688,7 @@ footer .color-text-paragraph {
     justify-content: center;
     align-items: center;
   }
-  
+
   .preloader_demo .img {
     width: 50px;
     height: 50px;
@@ -9698,7 +9698,7 @@ footer .color-text-paragraph {
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
   }
-  
+
   .preloader_demo .img img {
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -9707,7 +9707,7 @@ footer .color-text-paragraph {
     -o-border-radius: 50%;
   }
 
-  
+
   ul.timeline {
     list-style-type: none;
     position: relative;
@@ -9740,4 +9740,41 @@ ul.timeline>li:before {
     width: 20px;
     height: 20px;
     z-index: 400;
+}
+
+.job-skill {
+    background: var(--ColorPrimary) !important;
+    padding: 7px 10px 7px 10px !important;
+    color: white !important;
+}
+
+.job-skill:hover {
+    color: white !important;
+}
+
+.featured {
+    background: #ae00ae !important;
+    color: white !important;
+}
+
+.featured:hover {
+    color: white !important;
+}
+
+.highlight {
+    background: #f05d04 !important;
+    color: white !important;
+}
+
+.highlight:hover {
+    color: white !important;
+}
+
+.box-map iframe {
+    height: 30vh;
+}
+
+.job-category li {
+    display: block;
+    padding: 10px;
 }

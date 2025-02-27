@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Admin\FrontendJobPageController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\CandidateDashboardController;
 use App\Http\Controllers\Frontend\CandidateProfileController;
 use App\Http\Controllers\Frontend\CompanyDashboardController;
+use App\Http\Controllers\Frontend\CompanyOrderController;
 use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
@@ -15,6 +17,7 @@ use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
 use App\Http\Controllers\Frontend\PricingPageController;
 use App\Http\Controllers\Frontend\CandidateTrackingController;
+use App\Http\Controllers\Frontend\jobController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +52,13 @@ Route::get('candidates/{slug}', [FrontendCandidatePageController::class, 'show']
 Route::get('pricing', PricingPageController::class)->name('pricing.index');
 Route::get('checkout/{plan_id}', CheckoutPageController::class)->name('checkout.index');
 
+/** Find a Job route */
+Route::get('jobs', [FrontendJobPageController::class, 'index'])->name('jobs.index');
+//Route::get('jobs/{slug}', [FrontendJobPageController::class, 'show'])->name('jobs.show');
+//Route::post('apply-job/{id}', [FrontendJobPageController::class, 'applyJob'])->name('apply-job.store');
+//Route::get('job-bookmark/{id}', [CandidateJobBookmarkController::class, 'save'])->name('job.bookmark');
+
+
 /** Candidates Dashboard Routes */
 Route::group([
                 'Middleware' => ['auth', 'verified', 'user.role:candidate'],
@@ -68,6 +78,7 @@ Route::group([
 
     //Candidate tracking Route
     Route::get('/profile/track-candidate-application', [CandidateTrackingController::class, 'trackCandidateApplication'])->name('profile.track-candidate-application');
+    Route::post('/application/tracking', [CandidateTrackingController::class, 'applicationTracking'])->name('application.tracking');
 });
 
 /** Company Dashboard Routes */
@@ -88,7 +99,13 @@ function(){
 
 
     /**  Order Routes */
+    Route::get('orders', [CompanyOrderController::class, 'index'])->name('orders.index');
+    Route::get('orders/{id}', [CompanyOrderController::class, 'show'])->name('orders.show');
+    Route::get('orders/invoice/{id}', [CompanyOrderController::class, 'invoice'])->name('orders.invoice');
 
+    /**  Job Routes */
+    Route::get('applications/{id}', [JobController::class, 'applications'])->name('job.applications');
+    Route::resource('jobs', jobController::class);
 
     /**Payment Routes */
     Route::get('payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');

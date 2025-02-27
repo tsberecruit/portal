@@ -17,4 +17,9 @@ class Notify {
     static function deletedNotification() {
         return notyf()->addSuccess('Deleted Successfully', 'Success!');
     }
+
+    // Deleted Notification
+    static function errorNotification(string $error) {
+        return notyf()->addError($error, 'Error!!');
+    }
 }

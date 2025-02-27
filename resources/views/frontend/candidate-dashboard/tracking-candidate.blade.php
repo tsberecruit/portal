@@ -27,7 +27,7 @@
 
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                             aria-labelledby="pills-home-tab">
-                            <form action="{{ route('candidate.profile.basic-info.update') }}" method="post"
+                            <form action="{{ route('candidate.application.tracking') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
@@ -37,10 +37,10 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="font-sm color-text-mutted mb-10">Your Application ID *</label>
-                                                    <input name="full_name"
-                                                        class="form-control {{ $errors->has('full_name') ? 'is-invalid' : '' }}"
+                                                    <input name="app_id"
+                                                        class="form-control {{ $errors->has('app_id') ? 'is-invalid' : '' }}"
                                                         type="text" value="{{-- $candidate?->full_name --}}">
-                                                    <x-input-error :messages="$errors->get('full_name')" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('app_id')" class="mt-2" />
                                                 </div>
                                             </div>
 
