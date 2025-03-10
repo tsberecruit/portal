@@ -59,15 +59,15 @@
                     <div class="col-md-12">
                         <h4>Experience</h4>
                         <ul class="timeline">
-                         @foreach ($candidate->experiences as $experience)
+                            @foreach ($candidate->experiences as $experience)
                             <li>
-                                <a href="#" class="float-right">{{ formatDate($experience->start) }} - {{ $experience->currently_working ? 'Current' :  formatDate($experience->end) }}</a>
+                                <a href="#" class="float-right">{{ formatDate($experience->start) }} - {{ $experience->currently_working ? 'Current' :  formatDate($experience->end)}}</a>
                                 <a href="javascript:;">{{ $experience->designation }}</a> | <span>{{ $experience->department }}</span>
 
                                 <p>{{ $experience->company }}</p>
                                 <p>{{ $experience->responsibilities }}</p>
                             </li>
-                        @endforeach
+                            @endforeach
 
                         </ul>
                     </div>
@@ -76,7 +76,7 @@
                     <div class="col-md-12 mt-4">
                         <h4>Education</h4>
                         <ul class="timeline">
-                        @foreach ($candidate->educations as $education)
+                            @foreach ($candidate->educations as $education)
                             <li>
                                 <a href="#" class="float-right">{{ formatDate($education->year) }}</a>
                                 <a href="javascript:;">{{ $education->level }}</a>
@@ -84,7 +84,7 @@
                                 <p>{{ $education->degree }}</p>
                                 <p>{{ $education->note }}</p>
                             </li>
-                        @endforeach
+                            @endforeach
 
                         </ul>
                     </div>
@@ -101,7 +101,7 @@
                 <li>
                   <div class="sidebar-icon-item"><i class="fi-rr-briefcase"></i></div>
                   <div class="sidebar-text-info"><span class="text-description">Experience</span><strong
-                      class="small-heading">{{ $candidate->experience?->name }}</strong></div>
+                      class="small-heading">{{ $candidate->experience->name }}</strong></div>
                 </li>
                 <li>
                     <div class="sidebar-icon-item"><i class="fi fi-rr-settings-sliders"></i></div>
@@ -118,7 +118,7 @@
                   <div class="sidebar-text-info"><span class="text-description">Languages</span><strong
                       class="small-heading">
                         @foreach ($candidate->languages as $candidateLanguage)
-                            <p class="badge bg-info text-light">{{ $candidateLanguage->language?->name }}</p>
+                            <p class="badge bg-info text-light">{{ $candidateLanguage->language->name }}</p>
                         @endforeach
                     </strong></div>
                 </li>
@@ -126,7 +126,7 @@
                 <li>
                     <div class="sidebar-icon-item"><i class="fi-rr-marker"></i></div>
                     <div class="sidebar-text-info"><span class="text-description">Profession</span><strong
-                        class="small-heading">{{ $candidate->profession?->name }}</strong></div>
+                        class="small-heading">{{ $candidate->profession->name }}</strong></div>
                 </li>
 
                 <li>

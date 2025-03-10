@@ -37,9 +37,9 @@
 
                                             <select name="skills[]" multiple class="form-control form-icons select-active">
                                                 <option value="">All</option>
-                                                {{-- @foreach ($skills as $skill)
+                                                @foreach ($skills as $skill)
                                                 <option @selected(request()->has('skills') ? in_array($skill->slug, request()->skills) : false) value="{{ $skill->slug }}">{{ $skill->name }}</option>
-                                                @endforeach --}}
+                                                @endforeach
 
                                             </select>
 
@@ -55,13 +55,13 @@
                                               <input type="radio" name="experience" class="x-radio" value=""><span class="text-small">All</span>
                                             </label>
                                         </li>
-                                        {{-- @foreach ($experiences as $experience) --}}
+                                        @foreach ($experiences as $experience)
                                         <li class="active">
                                           <label class="d-flex">
-                                            {{-- <input type="radio" {{ @checked($experience->id == request()->experience) }} name="experience" class="x-radio" value="{{ $experience->id }}"><span class="text-small">{{ $experience->name }}</span>--}}
+                                            <input type="radio" @checked($experience->id == request()->experience) name="experience" class="x-radio" value="{{ $experience->id }}"><span class="text-small">{{ $experience->name }}</span>
                                           </label>
                                         </li>
-                                        {{-- @endforeach --}}
+                                        @endforeach
 
                                       </ul>
                                     </div>
@@ -102,7 +102,7 @@
 
                                                     @foreach ($candidate->skills as $candidateSkill)
                                                         @if ($loop->index <= 5)
-                                                            <a class="btn btn-tags-sm mb-10 mr-5" href="">{{ $candidateSkill->skill?->name }}</a>
+                                                            <a class="btn btn-tags-sm mb-10 mr-5" href="">{{ $candidateSkill->skill->name }}</a>
                                                         @endif
                                                     @endforeach
                                                 </div>
@@ -111,7 +111,7 @@
                                                 <div class="row">
                                                     <div class="col-6"><span class="d-flex align-items-center"><i
                                                                 class="fi-rr-marker mr-5 ml-0"></i><span
-                                                                class="font-sm color-text-mutted">{{ $candidate->candidateCountry?->name }}</span></span></div>
+                                                                class="font-sm color-text-mutted">{{ $candidate->candidateCountry->name }}</span></span></div>
                                                     <div class="col-6"><span
                                                             class="d-flex justify-content-end align-items-center"><span
                                                                 class="font-sm"><a href="{{ route('candidates.show', $candidate->slug) }}" class="text-primary d-flex align-items-center">Resume <i style="margin-bottom: -4px;" class="fi fi-rr-arrow-right"></i></a></span></span>
@@ -122,16 +122,16 @@
                                     </div>
                                 </div>
                             @empty
-                                <h4 class="text-center">No Data Found!</h4>
+                                <h4 class="text-center">No Candidate Found!</h4>
                             @endforelse
 
                             <div class="col-12">
 
                                 <div class="paginations">
                                     <ul class="pager">
-                                        {{--@if ($candidates->hasPages())
+                                        @if ($candidates->hasPages())
                                             {{ $candidates->withQueryString()->links() }}
-                                        @endif--}}
+                                        @endif
                                     </ul>
                                 </div>
                             </div>

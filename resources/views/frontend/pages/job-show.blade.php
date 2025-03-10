@@ -204,13 +204,13 @@
   </section>
 @endsection
 
-{{--@push('scripts')
+@push('scripts')
   <script>
     $(document).ready(function() {
         $('.apply-now').on('click', function() {
             $.ajax({
                 method: 'POST',
-                //url: "{{ route('apply-job.store', $job->id) }}",
+                url: "{{ route('apply-job.store', $job->id) }}",
                 data: {_token:"{{ csrf_token() }}"},
                 beforeSend: function() {
 
@@ -228,4 +228,4 @@
         })
     })
   </script>
-@endpush--}}
+@endpush

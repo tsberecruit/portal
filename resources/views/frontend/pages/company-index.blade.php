@@ -33,7 +33,7 @@
                       <div class="info-text mt-10">
                         <h5 class="font-bold"><a href="{{ route('companies.show', $company->slug) }}">{{ $company->name }}</a></h5>
 
-                        <span class="card-location">{{-- formatLocation($company->companyCountry->name, $company->companyState->name) --}}</span>
+                        <span class="card-location">{{ formatLocation($company->companyCountry->name, $company->companyState->name) }}</span>
                         <div class="mt-30"><a class="btn btn-grey-big" href="{{ route('companies.show', $company->slug) }}"><span>{{ $company->jobs_count }}</span><span> Jobs Open</span></a></div>
                       </div>
                     </div>
@@ -48,9 +48,9 @@
 
           <div class="paginations">
             <ul class="pager">
-                {{-- @if ($companies->hasPages())
+                @if ($companies->hasPages())
                     {{ $companies->withQueryString()->links() }}
-                @endif --}}
+                @endif
             </ul>
         </div>
         </div>
@@ -72,9 +72,9 @@
                             <select name="country" class="form-control country form-icons select-active">
                                 <option value="">Country</option>
                                 <option value="">All</option>
-                                {{-- @foreach ($countries as $country)
+                                @foreach ($countries as $country)
                                 <option @selected(request()?->country == $country->id) value="{{ $country->id }}">{{ $country->name }}</option>
-                                @endforeach --}}
+                                @endforeach
 
                             </select>
                         </div>
@@ -82,29 +82,29 @@
                     <div class="filter-block mb-20">
                         <div class="form-group select-style">
                             <select name="state" class="form-control state form-icons select-active">
-                                {{-- @if ($selectedStates)
+                                @if ($selectedStates)
                                     <option value="">All</option>
                                     @foreach ($selectedStates as $state)
                                         <option @selected($state->id == request()->state) value="{{ $state->id }}" >{{ $state->name }}</option>
                                     @endforeach
                                 @else
                                     <option value="" >State</option>
-                                @endif --}}
+                                @endif
                             </select>
                         </div>
                     </div>
                     <div class="filter-block mb-20">
                         <div class="form-group select-style">
                             <select name="city" class="form-control city form-icons select-active">
-                                {{-- @if ($selectedCites)
+                                @if ($selectedCities)
                                     <option value="">All</option>
 
-                                    @foreach ($selectedCites as $city)
+                                    @foreach ($selectedCities as $city)
                                         <option @selected($city->id == request()->city) value="{{ $city->id }}" >{{ $city->name }}</option>
                                     @endforeach
                                 @else
                                     <option value="">City</option>
-                                @endif --}}
+                                @endif
                             </select>
                             <button class="submit btn btn-default mt-10 rounded-1 w-100"
                                 type="submit">Search</button>
@@ -122,13 +122,13 @@
                                   <input type="radio" name="industry" class="x-radio" value=""><span class="text-small">All</span>
                                 </label>
                             </li>
-                            {{-- @foreach ($industryTypes as $type) --}}
+                            @foreach ($industryTypes as $type)
                             <li class="active">
                               <label class="d-flex">
-                                <input type="radio" {{-- @checked($type->slug == request()->industry) --}} name="industry" class="x-radio" value="{{-- $type->slug --}}"><span class="text-small">{{-- $type->name --}}</span><span class="number-item">{{-- $type->companies_count --}}</span>
+                                <input type="radio" @checked($type->slug == request()->industry) name="industry" class="x-radio" value="{{ $type->slug }}"><span class="text-small">{{ $type->name }}</span><span class="number-item">{{ $type->companies_count }}</span>
                               </label>
                             </li>
-                            {{-- @endforeach --}}
+                            @endforeach
 
                           </ul>
                         </div>
@@ -143,13 +143,13 @@
                                     <input type="radio" name="organization" class="x-radio" value=""><span class="text-small">All</span>
                                   </label>
                             </li>
-                            {{-- @foreach ($organizations as $organization) --}}
+                            @foreach ($organizations as $organization)
                             <li>
                                 <label class="d-flex">
-                                    <input type="radio" {{-- @checked($organization->slug == request()->organization) --}} name="organization" class="x-radio" value="{{-- $organization->slug --}}"><span class="text-small">{{-- $organization->name --}}</span><span class="number-item">{{-- $organization->companies_count --}}</span>
+                                    <input type="radio" @checked($organization->slug == request()->organization) name="organization" class="x-radio" value="{{ $organization->slug }}"><span class="text-small">{{ $organization->name }}</span><span class="number-item">{{ $organization->companies_count }}</span>
                                   </label>
                             </li>
-                            {{-- @endforeach --}}
+                            @endforeach
 
                           </ul>
                         </div>
@@ -168,8 +168,8 @@
 
 @push('scripts')
 <script>
-    //$(document).ready(function() {
-        //$('.country').on('change', function() {
+    $(document).ready(function() {
+        $('.country').on('change', function() {
             let country_id = $(this).val();
             // remove all previous cities
             $('.city').html("");
@@ -191,10 +191,10 @@
                 },
                 error: function(xhr, status, error) {}
             })
-        //})
+        })
 
         // get cities
-        //$('.state').on('change', function() {
+        $('.state').on('change', function() {
             let state_id = $(this).val();
 
             $.ajax({
@@ -214,7 +214,7 @@
                 },
                 error: function(xhr, status, error) {}
             })
-        //})
-    //})
+        })
+    })
 </script>
 @endpush

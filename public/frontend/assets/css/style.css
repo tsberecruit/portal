@@ -9774,7 +9774,16 @@ ul.timeline>li:before {
     height: 30vh;
 }
 
-.job-category li {
+.job-category li a{
     display: block;
     padding: 10px;
+}
+
+.x-active {
+    color: var(--colorPrimary) !important;
+}
+
+.x-radio {
+    height: 18px !important;
+    width: 40px !important;
 }

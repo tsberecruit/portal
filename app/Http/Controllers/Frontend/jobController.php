@@ -43,14 +43,21 @@ class jobController extends Controller
         return view('frontend.company-dashboard.job.index', compact('jobs'));
     }
 
+    function applications(string $id) : View {
+        $applications = AppliedJob::where('job_id', $id)->paginate(20);
+
+        $jobTitle = Job::select('title')->where('id', $id)->first();
+        return view('frontend.company-dashboard.applications.index', compact('applications', 'jobTitle'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function create() : View //|RedirectResponse
+    public function create() : View|RedirectResponse
     {
         storePlanInformation();
         $userPlan = session('user_plan');
-        if($userPlan?->job_limit < 1) {
+        if($userPlan->job_limit < 1) {
             Notify::errorNotification('You have reached your plan limit please upgrade your plan');
             return to_route('company.jobs.index');
         }
@@ -150,7 +157,7 @@ class jobController extends Controller
             $createSkill->save();
         }
 
-       if($job) {
+        if($job) {
             $userPlan = auth()->user()->company->userPlan;
             $userPlan->job_limit = $userPlan->job_limit - 1;
             if($job->featured == 1) {

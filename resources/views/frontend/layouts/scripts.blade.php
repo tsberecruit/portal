@@ -5,7 +5,9 @@
      * ----------------------------------
     **/
     // Create an instance of Notyf
-    var notyf = new Notyf();
+    var notyf = new Notyf({
+        duration: 5000
+    });
     // Date Picker
      $('.datepicker').datepicker({
         format: 'yyyy-m-d',
@@ -78,4 +80,7 @@
                     }
                 });
         });
+
+        
+
 </script>

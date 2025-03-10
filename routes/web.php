@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\FrontendJobPageController;
+use App\Http\Controllers\Frontend\FrontendJobPageController;
 use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -12,6 +12,8 @@ use App\Http\Controllers\Frontend\CompanyProfileController;
 use App\Http\Controllers\Frontend\LocationController;
 use App\Http\Controllers\Frontend\CandidateExperienceController;
 use App\Http\Controllers\Frontend\CandidateEducationController;
+use App\Http\Controllers\Frontend\CandidateJobBookmarkController;
+use App\Http\Controllers\Frontend\CandidateMyJobController;
 use App\Http\Controllers\Frontend\CheckoutPageController;
 use App\Http\Controllers\Frontend\FrontendCandidatePageController;
 use App\Http\Controllers\Frontend\FrontendCompanyPageController;
@@ -54,14 +56,14 @@ Route::get('checkout/{plan_id}', CheckoutPageController::class)->name('checkout.
 
 /** Find a Job route */
 Route::get('jobs', [FrontendJobPageController::class, 'index'])->name('jobs.index');
-//Route::get('jobs/{slug}', [FrontendJobPageController::class, 'show'])->name('jobs.show');
-//Route::post('apply-job/{id}', [FrontendJobPageController::class, 'applyJob'])->name('apply-job.store');
-//Route::get('job-bookmark/{id}', [CandidateJobBookmarkController::class, 'save'])->name('job.bookmark');
+Route::get('jobs/{slug}', [FrontendJobPageController::class, 'show'])->name('jobs.show');
+Route::post('apply-job/{id}', [FrontendJobPageController::class, 'applyJob'])->name('apply-job.store');
+Route::get('job-bookmark/{id}', [CandidateJobBookmarkController::class, 'save'])->name('job.bookmark');
 
 
 /** Candidates Dashboard Routes */
 Route::group([
-                'Middleware' => ['auth', 'verified', 'user.role:candidate'],
+                'middleware' => ['auth', 'verified', 'user.role:candidate'],
                 'prefix' => 'candidate',
                 'as' => 'candidate.'
             ],
@@ -76,6 +78,10 @@ Route::group([
     Route::post('/profile/account-email-update', [CandidateProfileController::class, 'AccountEmailUpdate'])->name('profile.account-email.update');
     Route::post('/profile/account-password-update', [CandidateProfileController::class, 'AccountPasswordUpdate'])->name('profile.account-password.update');
 
+    /* My Job Route */
+    Route::get('applied-jobs', [CandidateMyJobController::class, 'index'])->name('applied-jobs.index');
+    Route::get('bookmarked-jobs', [CandidateJobBookmarkController::class, 'index'])->name('bookmarked-jobs.index');
+
     //Candidate tracking Route
     Route::get('/profile/track-candidate-application', [CandidateTrackingController::class, 'trackCandidateApplication'])->name('profile.track-candidate-application');
     Route::post('/application/tracking', [CandidateTrackingController::class, 'applicationTracking'])->name('application.tracking');
@@ -83,7 +89,7 @@ Route::group([
 
 /** Company Dashboard Routes */
 Route::group([
-    'Middleware' => ['auth', 'verified', 'user.role:company'],
+    'middleware' => ['auth', 'verified', 'user.role:company'],
     'prefix' => 'company',
     'as' => 'company.'
 ],

@@ -56,70 +56,70 @@
           <div class="box-related-job content-page" id="open-positions">
             <h5 class="mb-30">Open Jobs</h5>
             <div class="box-list-jobs display-list">
-                {{-- @forelse ($openJobs as $job) --}}
+                 @forelse ($openJobs as $job)
                 <div class="col-xl-12 col-md-4">
                     <div class="card-grid-2 hover-up"><span class="flash"></span>
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="card-grid-2-image-left">
-                                    <div class="image-box"><img src="{{-- asset($job->company->logo) --}}"
+                                    <div class="image-box"><img src="{{ asset($job->company->logo) }}"
                                             alt="joblist"></div>
                                     <div class="right-info"><a class="name-job"
-                                            href="{{-- route('companies.show', $job->company->slug) --}}">{{-- $job->company->name --}}</a><span
-                                            class="location-small">{{-- formatLocation($job->company->companyCountry->name, $job->company?->companyState?->name) --}}</span>
+                                            href="{{ route('companies.show', $job->company->slug) }}">{{ $job->company->name --}}</a><span
+                                            class="location-small">{{ formatLocation($job->company->companyCountry->name, $job->company?->companyState?->name) }}</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-lg-6 text-start text-md-end pr-60 col-md-6 col-sm-12">
                                 <div class="pl-15 mb-15 mt-30">
-                                    {{-- @if ($job->featured) --}}
+                                    @if ($job->featured)
                                     <a class="btn btn-grey-small mr-5 featured" href="javascript:;">Featured</a>
-                                    {{-- @endif --}}
-                                    {{-- @if ($job->highlight) --}}
+                                    @endif
+                                    @if ($job->highlight)
                                     <a class="btn btn-grey-small mr-5 highlight" href="javascript:;">Highlight</a>
-                                    {{-- @endif --}}
+                                    @endif
                                     </div>
                             </div>
                         </div>
                         <div class="card-block-info">
-                            <h4><a href="{{-- route('jobs.show', $job->slug) --}}">{{-- $job->title --}}</a></h4>
+                            <h4><a href="{{ route('jobs.show', $job->slug) }}">{{ $job->title }}</a></h4>
                             <div class="mt-5">
                                     <span
-                                    class="card-briefcase">{{-- $job->jobType->name --}}</span>
-                                    <span class="card-briefcase">{{-- $job->jobExperience?->name --}}</span>
+                                    class="card-briefcase">{{ $job->jobType->name }}</span>
+                                    <span class="card-briefcase">{{ $job->jobExperience?->name }}</span>
                                     <span
-                                    class="card-time"><span>{{-- $job->created_at->diffForHumans() --}}</span></span>
+                                    class="card-time"><span>{{ $job->created_at->diffForHumans() }}</span></span>
                             </div>
                             {{-- <p class="font-sm color-text-paragraph mt-10">Lorem ipsum dolor sit amet,
                                 consectetur adipisicing
                                 elit. Recusandae architecto eveniet, dolor quo repellendus pariatur</p> --}}
                                 <div class="mb-15 mt-30">
-                                    {{-- @foreach ($job->skills as $jobSkill) --}}
-                                    {{-- @if ($loop->index <= 6) --}}
-                                        <a class="btn btn-grey-small mr-5 job-skill" href="javascript:;">{{-- $jobSkill->skill->name --}}</a>
-                                    {{-- @elseif ($loop->index == 7) --}}
+                                    @foreach ($job->skills as $jobSkill)
+                                    @if ($loop->index <= 6)
+                                        <a class="btn btn-grey-small mr-5 job-skill" href="javascript:;">{{ $jobSkill->skill->name }}</a>
+                                    @elseif ($loop->index == 7)
                                     <a class="btn btn-grey-small mr-5 job-skill" href="javascript:;">More..</a>
-                                   {{-- @endif
-                                    @endforeach --}}
+                                    @endif
+                                    @endforeach
                                 </div>
 
                             <div class="card-2-bottom mt-20">
                                 <div class="row">
-                                    {{-- @if ($job->salary_mode === 'range') --}}
+                                    @if ($job->salary_mode === 'range')
                                     <div class="col-lg-7 col-7"><span
                                         class="card-text-price">
-                                        {{-- $job->min_salary --}} - {{-- $job->max_salary --}} {{-- config('settings.site_default_currency') --}}
+                                        {{ $job->min_salary }} - {{ $job->max_salary }} {{ config('settings.site_default_currency') }}
                                     </span><span
                                         class="text-muted"></span>
                                     </div>
-                                    {{-- @else --}}
+                                    @else
                                     <div class="col-lg-7 col-7"><span
                                         class="card-text-price">
-                                        {{-- $job->custom_salary --}}
+                                        {{ $job->custom_salary }}
                                     </span><span
                                         class="text-muted"></span>
                                     </div>
-                                    {{-- @endif --}}
+                                    @endif
 
                                     <div class="col-lg-5 col-5 text-end">
                                         <div class="btn bookmark-btn" >
@@ -133,17 +133,17 @@
                         </div>
                     </div>
                 </div>
-            {{-- @empty --}}
+            @empty
                 <h5 class="text-center">No Open Job Found! 😥</h5>
-            {{-- @endforelse --}}
+            @endforelse
 
             </div>
 
             <div class="paginations">
                 <ul class="pager">
-                    {{-- @if ($openJobs->hasPages()) --}}
-                    {{-- $openJobs->withQueryString()->links() --}}
-                {{-- @endif --}}
+                    @if ($openJobs->hasPages())
+                    {{ $openJobs->withQueryString()->links() }}
+                    @endif
                 </ul>
             </div>
           </div>
