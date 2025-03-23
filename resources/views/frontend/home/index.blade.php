@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('contents')
-    <div class="bg-homepage1"></div>
+
     <!-- hero section starts-->
     @include('frontend.home.sections.hero-section')
     <!-- hero section ends-->
@@ -28,15 +28,17 @@
     <!-- counter section starts-->
     @include('frontend.home.sections.counter-section')
     <!-- counter section ends-->
-    
+
     <!-- top recruiters section starts-->
     @include('frontend.home.sections.top-recruiters-section')
     <!-- top recruiters section ends-->
-    
 
-    <!-- top price plan section starts-->
+
+    <!-- Price Plan Section Start -->
+    @if (auth()->user()?->role != 'candidate')
     @include('frontend.home.sections.price-plan-section')
-    <!-- top price plan section ends-->
+    @endif
+    <!-- Price Plan Section End -->
 
     <!-- Job By Location section starts-->
     @include('frontend.home.sections.job-by-location-section')

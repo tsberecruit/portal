@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BvSkillController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\IndustryTypeController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\Admin\CountryController;
 use App\Http\Controllers\Admin\StateController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Admin\EducationController;
+use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\JobCategoryController;
 use App\Http\Controllers\Admin\JobController;
 use App\Http\Controllers\Admin\JobExperienceController;
@@ -129,6 +131,11 @@ Route::group(['middleware' => ['auth:admin'], 'prefix' => 'admin', 'as' => 'admi
     /** Jobs */
     Route::post('job-status/{id}', [JobController::class, 'changeStatus'])->name('job-status.update');
     Route::resource('jobs', JobController::class);
+
+    /** Blogs */
+    Route::resource('blogs', BlogController::class);
+    /** Heros */
+    Route::resource('hero', HeroController::class);
 
     /** Payment Settings Route  */
     Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');

@@ -199,3 +199,39 @@ https://github.com/cviebrock/eloquent-sluggable
 - Storing/submitted data from the Job Posting Form to the DB 
 - Showing submitted data on the index page
 - Working with the edit, Update and delete feature for the Job Posting 
+
+# Company Job Posting Feature
+- Working with Index Page
+- Working with Create Feature
+- Updating Job Posting Feature
+- Adding Job Form Validations for User Paln
+- Working With Status Change Feature
+
+# Finding A Job Page
+- Mastering FrontEnd Job Page
+- Showing Dynamic Content in Job Page
+- Working with Job View Page
+- Working with Search Feature for Job
+
+# Recruiters - Companies Page
+- Showing Dynamic Contents
+- Working with search feature
+- Applying some fixes
+
+# Candidate Page
+- Working With Candidate Page
+
+# Job Apply and Bookmarking
+- Working with Job Apply
+- Showing Dynamic Data in Dashboard for Applied job
+- Showing Job Application in Company Dashboard
+- Working with Bookmark
+
+# Blog System
+- Working with Blog System 
+- Applying Blog CRUD method in the Dashboard 
+- Working on displaying blog data on the frontend
+
+# Home Page - Hero Section
+- Working with Update Form
+- 

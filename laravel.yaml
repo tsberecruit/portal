@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: php-laravel
+  labels:
+    app: php-laravel
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: php-laravel
+  template:
+    metadata:
+      labels:
+        app: php-laravel
+    spec:
+      containers:
+      - name: php-laravel
+        image: kellx/laravel-php:latest
+        ports: 
+        - containerPort: 8000
+        env:
+        - name: LARAVEL_DATABASE_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: mysqldb-configmap
+              key: database_url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: laravel-php-service
+spec:
+  selector:
+    app: php-laravel
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 30000
